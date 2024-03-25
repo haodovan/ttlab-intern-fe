@@ -4,7 +4,7 @@ import ProductDetail from "../pages/ProductDetail.vue";
 import ThePage from "../pages/ThePage.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "/", component: ThePage},
+  { path: "/", component: Homepage},
   { name: "homepage", path: "/homepage", component: Homepage },
   { name: "product-detail", path: "/product-detail", component: ProductDetail }
 ];
