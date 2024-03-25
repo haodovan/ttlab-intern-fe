@@ -1,43 +1,45 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useUserStore = defineStore('userStore', {
+export const useUserStore = defineStore("userStore", {
   state: () => ({
     collapse: false,
-    lists: [
-      'Shop1',
-      'Shop2',
-      'Shop3',
-      'Shop4'
-    ],
-    icons: [
-      'mdi-twitter',
-      'mdi-facebook',
-      'mdi-instagram',
-      'mdi-github',
-    ],
-    links: [
+    lists: ["Shop1", "Shop2", "Shop3", "Shop4"],
+    icons: ["mdi-twitter", "mdi-facebook", "mdi-instagram", "mdi-github"],
+    link1: [
       {
-        title: 'Home',
+        title: "Home",
         disabled: true,
-        href: '/product-detail',
+        href: "/product-detail",
       },
       {
-        title: 'Shop',
+        title: "Shop",
         disabled: true,
-        href: '/product-detail',
+        href: "/product-detail",
       },
       {
-        title: 'Men',
+        title: "Men",
         disabled: true,
-        href: '/product-detail',
+        href: "/product-detail",
       },
       {
-        title: 'T-shirts',
+        title: "T-shirts",
         disabled: false,
-        href: '/product-detail',
+        href: "/product-detail",
       },
     ],
-    tab: 'Rating & Reviews',
+    link2: [
+      {
+        title: "Home",
+        disabled: true,
+        href: "/category-page",
+      },
+      {
+        title: "Casual",
+        disabled: false,
+        href: "/category-page",
+      },
+    ],
+    tab: "Rating & Reviews",
     rating: 4.5,
     productData: [],
   }),
@@ -55,7 +57,7 @@ export const useUserStore = defineStore('userStore', {
   //     })
   //   }
   // }
-})
+});
 
 // Sử dụng hook onMounted để gọi action fetchData khi component được mounted
 // onMounted(() => {

@@ -1,15 +1,7 @@
 <template>
   <HeaderBar />
-  <v-app class="bg-white" height="500">
-    <v-container fluid style="padding: 0 100px">
-      <v-divider></v-divider>
-
-      <v-breadcrumbs :items="links" style="padding: 23px 0">
-        <template v-slot:divider>
-          <v-icon icon="mdi-chevron-right"></v-icon>
-        </template>
-      </v-breadcrumbs>
-    </v-container>
+  <v-app class="bg-white">
+    <CustomBreadcrumb :items="breadcrumbItems" />
 
     <!-- Product section -->
     <v-container flat class="products bg-white" fluid style="padding: 0 85px">
@@ -210,7 +202,7 @@
 <script setup lang="ts">
 import { useUserStore } from "../stores/app";
 
-const links = useUserStore().links;
+const breadcrumbItems = useUserStore().link1;
 const rating = useUserStore().rating;
 const tab = useUserStore().tab;
 </script>
