@@ -382,13 +382,19 @@ const tab = useUserStore().tab;
 }
 
 .product-tabs {
-  .product-tab {
-    span {
-      font-family: "Satoshi-Medium", sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 14px;
-      text-align: center;
+  .v-tabs {
+    .product-tab {
+      border-bottom: 2px solid #0000001a;
+      span {
+        font-family: "Satoshi-Medium", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 14px;
+        text-align: center;
+      }
+    }
+    .v-slide-group-item--active {
+      border-bottom: 1px solid #000000;
     }
   }
 
