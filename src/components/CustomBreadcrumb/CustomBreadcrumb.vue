@@ -14,8 +14,6 @@
 import { defineComponent, PropType } from "vue";
 import { BreadcrumbItem } from "./breadcrumbsInterface.ts";
 
-// console.log(items);
-
 export default defineComponent({
   props: {
     items: {
