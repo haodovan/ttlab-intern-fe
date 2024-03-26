@@ -2,9 +2,10 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Homepage from "../pages/Homepage.vue";
 import ProductDetail from "../pages/ProductDetail.vue";
 import CategoryPage from "../pages/CategoryPage.vue";
+import ProductCard from "../components/ProductCard/ProductCard.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "/", redirect: "/homepage" },
+  { path: "/", component: ProductCard },
   { name: "homepage", path: "/homepage", component: Homepage },
   { name: "product-detail", path: "/product-detail", component: ProductDetail },
   { name: "category-page", path: "/category-page", component: CategoryPage },

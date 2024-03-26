@@ -69,7 +69,9 @@
             <v-btn variant="plain" icon="mdi-plus"></v-btn>
             <!-- </div> -->
           </div>
-          <v-btn class="submit-btn text-capitalize">Add to Cart</v-btn>
+          <v-btn class="submit-btn text-capitalize" elevation="0"
+            >Add to Cart</v-btn
+          >
         </div>
       </v-card>
     </v-container>
@@ -82,8 +84,9 @@
           :key="text"
           :value="text"
           class="product-tab text-capitalize bg-white"
+          style="max-width: 33.3333333%"
         >
-          <span>{{ text }}</span>
+          <span>{{ text }}</span> {{ console.log(tab) }}
         </v-tab>
       </v-tabs>
 
@@ -104,15 +107,17 @@
                   color="#F0F0F0"
                   height="48px"
                   width="48px"
+                  elevation="0"
                 ></v-btn>
                 <v-btn
                   class="text-capitalize"
                   color="#F0F0F0"
                   width="120"
                   append-icon="mdi-menu-down"
+                  elevation="0"
                   >Latest</v-btn
                 >
-                <v-btn style="text-transform: none" width="168"
+                <v-btn style="text-transform: none" width="168" elevation="0"
                   >Write a Review</v-btn
                 >
               </div>
@@ -126,7 +131,9 @@
                 v-for="n in 6"
                 :key="n"
               >
-                <div class="product-rating d-flex align-center">
+                <div
+                  class="product-rating d-flex align-center justify-space-between"
+                >
                   <v-rating
                     :model-value="rating"
                     active-color="#FFC633"
@@ -134,6 +141,7 @@
                     density="compact"
                     half-increments
                   ></v-rating>
+                  <v-icon>mdi-dots-horizontal</v-icon>
                 </div>
                 <v-card-title class="d-flex align-center"
                   ><span>Samantha D.</span
@@ -152,7 +160,7 @@
                 >
               </v-card>
             </div>
-            <v-btn class="load-more">Load More Reviews</v-btn>
+            <v-btn class="load-more" elevation="0">Load More Reviews</v-btn>
           </v-window-item>
         </v-window>
       </v-card-text>
@@ -194,17 +202,15 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <FooterBar />
   </v-app>
+  <FooterBar />
 </template>
 
 <script setup lang="ts">
 import { useUserStore } from "../stores/app";
 
 const breadcrumbItems = useUserStore().link1;
-const rating = useUserStore().rating;
-const tab = useUserStore().tab;
+const { rating, tab } = useUserStore();
 </script>
 
 <style lang="scss" scoped>
@@ -481,7 +487,7 @@ const tab = useUserStore().tab;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 82px;
+  margin-bottom: 156px;
 
   h1 {
     font-family: "Integralcf-Bold", sans-serif;
