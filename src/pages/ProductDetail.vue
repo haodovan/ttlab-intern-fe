@@ -63,11 +63,9 @@
 
         <div class="buy-section d-flex align-center">
           <div class="product-buy d-flex align-center justify-space-between">
-            <!-- <div class="d-flex align-center justify-space-between" style="width: 100%;"> -->
             <v-btn variant="plain" icon="mdi-minus"></v-btn>
             <span>1</span>
             <v-btn variant="plain" icon="mdi-plus"></v-btn>
-            <!-- </div> -->
           </div>
           <v-btn class="submit-btn text-capitalize" elevation="0"
             >Add to Cart</v-btn

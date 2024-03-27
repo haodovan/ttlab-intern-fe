@@ -8,8 +8,12 @@
     <v-icon class="mr-5">mdi:mdi-close</v-icon>
   </v-app-bar>
   <!-- Navbar -->
-  <v-app-bar flat class="bg-white" height="100" style="padding: 0 100px;">
-    <v-container class="d-flex align-center justify-space-between" fluid style="padding: 0;">
+  <v-app-bar flat class="bg-white" height="100" style="padding: 0 100px">
+    <v-container
+      class="d-flex align-center justify-space-between"
+      fluid
+      style="padding: 0"
+    >
       <v-flex cols="1" class="d-flex align-center justify-center">
         <v-icon class="hidden-lg-and-up">mdi-menu</v-icon>
         <span class="logo">SHOP.CO</span>
@@ -17,8 +21,13 @@
       <v-flex cols="3" class="links d-flex hidden-sm-and-down">
         <v-menu>
           <template v-slot:activator="{ props }">
-            <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text" color="black" v-bind="props"
-              append-icon="mdi-menu-down">
+            <v-btn
+              class="nav-btn text-capitalize hidden-sm-and-down"
+              variant="text"
+              color="black"
+              v-bind="props"
+              append-icon="mdi-menu-down"
+            >
               Shop
             </v-btn>
           </template>
@@ -28,13 +37,29 @@
             </v-list-item>
           </v-list>
         </v-menu>
-        <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text">On Sale</v-btn>
-        <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text">New Arrivals</v-btn>
-        <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text">Brands</v-btn>
+        <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text"
+          >On Sale</v-btn
+        >
+        <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text"
+          >New Arrivals</v-btn
+        >
+        <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text"
+          >Brands</v-btn
+        >
       </v-flex>
       <v-col cols="5" class="hidden-md-and-down">
-        <v-text-field class="hidden-md-and-down search-bar" label="Search for products..." rounded density="comfortable"
-          variant="solo" flat hide-details single-line prepend-inner-icon="mdi:mdi-magnify" bg-color="#f0f0f0"></v-text-field>
+        <v-text-field
+          class="hidden-md-and-down search-bar"
+          label="Search for products..."
+          rounded
+          density="comfortable"
+          variant="solo"
+          flat
+          hide-details
+          single-line
+          prepend-inner-icon="mdi:mdi-magnify"
+          bg-color="#f0f0f0"
+        ></v-text-field>
       </v-col>
       <v-col cols="1">
         <div class="icon-wrapper">
@@ -47,16 +72,33 @@
 </template>
 
 <script setup lang="ts">
-
-import { useUserStore } from '../stores/app';
+import { useUserStore } from "../stores/app";
 const links = useUserStore().lists;
-
 </script>
 
 <style lang="scss" scoped>
+.advertise {
+  span {
+    font-family: "Satoshi-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.9px;
+    text-align: left;
+  }
+  a {
+    cursor: pointer;
+    font-family: "Satoshi-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.9px;
+    text-align: left;
+    text-decoration: underline;
+    padding-left: 2px;
+  }
+}
 .v-app-bar {
   .nav-btn {
-    font-family: 'Satoshi-Regular', sans-serif;
+    font-family: "Satoshi-Regular", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 21.6px;
@@ -64,7 +106,7 @@ const links = useUserStore().lists;
   }
 
   .logo {
-    font-family: 'Integralcf-Bold', sans-serif;
+    font-family: "Integralcf-Bold", sans-serif;
     font-size: 32px;
     font-weight: 1000;
     line-height: 38.4px;
@@ -84,7 +126,7 @@ const links = useUserStore().lists;
   }
 
   .search-bar {
-    font-family: 'Satoshi-Regular', sans-serif;
+    font-family: "Satoshi-Regular", sans-serif;
     font-size: 16px;
     line-height: 21.6px;
     text-align: left;

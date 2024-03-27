@@ -268,8 +268,6 @@ const formattedValue = computed(() => {
 const selectedOption = ref("Most Popular");
 
 const selectOption = (option) => {
-  console.log(option);
-
   selectedOption.value = option;
 };
 </script>
