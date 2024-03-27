@@ -1,7 +1,7 @@
 <template>
   <v-card-item class="product-wrapper">
     <div class="product-image">
-      <v-img :src="src"></v-img>
+      <v-img src="../../assets/image.png"></v-img>
     </div>
     <div class="product-name">T-shirt With Tape Details</div>
     <div class="product-rating d-flex align-center">

@@ -38,6 +38,18 @@ const link2 = [
     href: "/category-page",
   },
 ];
+const link3 = [
+  {
+    title: "Home",
+    disabled: true,
+    href: "/your-cart",
+  },
+  {
+    title: "Cart",
+    disabled: false,
+    href: "/your-cart",
+  },
+];
 const tab = ref("Rating & Reviews");
 const rating = ref(2.5);
 const productList = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
@@ -76,6 +88,7 @@ export const useUserStore = defineStore({
     icons,
     link1,
     link2,
+    link3,
     tab,
     rating,
     productList,

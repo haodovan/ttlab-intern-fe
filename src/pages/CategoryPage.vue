@@ -1,7 +1,7 @@
 <template>
   <HeaderBar />
-  <CustomBreadcrumb :items="items" />
-  <v-app class="bg-white">
+  <CustomBreadcrumb :items="links" />
+  <v-app class="category-page">
     <!-- main section -->
     <v-container class="main-sector d-flex align-start justify-start" fluid>
       <div class="filter-bar">
@@ -252,7 +252,7 @@ import { useUserStore } from "../stores/app";
 import { computed, ref } from "vue";
 
 const userStore = useUserStore();
-const { link2: items, productList, colors, sizes, styles } = userStore;
+const { link2: links, productList, colors, sizes, styles } = userStore;
 
 const page = ref(1);
 
@@ -275,51 +275,77 @@ const selectOption = (option) => {
 </script>
 
 <style lang="scss" scoped>
-.main-sector {
-  padding: 0 100px;
-  margin-bottom: 100px;
+.category-page {
+  background-color: #ffffff;
+  color: #000000;
+  .main-sector {
+    padding: 0 100px;
+    margin-bottom: 100px;
 
-  .filter-bar {
-    width: 295px;
-    border: 1px solid #0000001a;
-    border-radius: 1.5rem;
-    padding: 20px 24px;
+    .filter-bar {
+      width: 295px;
+      border: 1px solid #0000001a;
+      border-radius: 1.5rem;
+      padding: 20px 24px;
 
-    .title-filter {
-      .title {
-        font-family: "Satoshi-Bold", sans-serif;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 27px;
-        text-align: left;
+      .title-filter {
+        .title {
+          font-family: "Satoshi-Bold", sans-serif;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 27px;
+          text-align: left;
+        }
+        .v-icon {
+          width: 24px;
+          height: 24px;
+          color: #00000066;
+        }
       }
-      .v-icon {
-        width: 24px;
-        height: 24px;
-        color: #00000066;
+      .v-divider {
+        margin: 24px 0;
       }
-    }
-    .v-divider {
-      margin: 24px 0;
-    }
-    .product-type-wrapper {
-      .product-type {
-        .product {
-          background-color: white;
-          color: #000000;
-          .v-expansion-panel-title {
-            padding: 0;
-            font-family: "Satoshi-Light", sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 21.6px;
-            text-align: left;
+      .product-type-wrapper {
+        .product-type {
+          .product {
+            background-color: white;
+            color: #000000;
+            .v-expansion-panel-title {
+              padding: 0;
+              font-family: "Satoshi-Light", sans-serif;
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 21.6px;
+              text-align: left;
+            }
           }
         }
       }
-    }
-    .price-option {
-      .v-expansion-panels {
+      .price-option {
+        .v-expansion-panels {
+          .v-expansion-panel {
+            .v-expansion-panel-title {
+              padding: 0;
+              font-family: "Satoshi-Bold", sans-serif;
+              font-size: 20px;
+              font-weight: 500;
+              line-height: 27px;
+              text-align: left;
+            }
+            .v-expansion-panel-text {
+              margin-bottom: 19px;
+              .slider-price {
+                font-family: "Satoshi-Bold", sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 18.9px;
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+      .products-color {
         .v-expansion-panel {
           .v-expansion-panel-title {
             padding: 0;
@@ -330,214 +356,192 @@ const selectOption = (option) => {
             text-align: left;
           }
           .v-expansion-panel-text {
-            margin-bottom: 19px;
-            .slider-price {
-              font-family: "Satoshi-Bold", sans-serif;
-              font-size: 14px;
-              font-weight: 500;
-              line-height: 18.9px;
-              text-align: left;
-            }
-          }
-        }
-      }
-    }
-    .products-color {
-      .v-expansion-panel {
-        .v-expansion-panel-title {
-          padding: 0;
-          font-family: "Satoshi-Bold", sans-serif;
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 27px;
-          text-align: left;
-        }
-        .v-expansion-panel-text {
-          .color-wrapper {
-            .product-color {
-              padding: 0;
-              .v-chip {
-                width: 37px;
-                height: 37px;
+            .color-wrapper {
+              .product-color {
+                padding: 0;
+                .v-chip {
+                  width: 37px;
+                  height: 37px;
+                }
               }
             }
           }
         }
       }
-    }
-    .products-size {
-      .v-expansion-panel {
-        .v-expansion-panel-title {
-          padding: 0;
-          font-family: "Satoshi-Bold", sans-serif;
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 27px;
-          text-align: left;
-        }
-        .v-expansion-panel-text {
-          .size-wrapper {
-            .product-size {
-              padding: 0;
-              p {
-                font-family: "Satoshi-Light", sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                line-height: 18.9px;
-                text-align: left;
-                color: #00000099;
-              }
-              .v-chip {
-                height: 39px;
-                padding: 10px 20px;
-                margin-bottom: 8px;
-              }
-
-              .v-chip--selected {
-                background-color: #000000;
+      .products-size {
+        .v-expansion-panel {
+          .v-expansion-panel-title {
+            padding: 0;
+            font-family: "Satoshi-Bold", sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 27px;
+            text-align: left;
+          }
+          .v-expansion-panel-text {
+            .size-wrapper {
+              .product-size {
+                padding: 0;
                 p {
-                  color: #ffffff;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    .products-style {
-      .v-expansion-panel {
-        .style-title {
-          padding: 0;
-          font-family: "Satoshi-Bold", sans-serif;
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 27px;
-          text-align: left;
-        }
-        .v-expansion-panel-text {
-          .style-lists {
-            .style-wrapper {
-              .product-style {
-                background-color: white;
-                color: #000000;
-                .v-expansion-panel-title {
-                  padding: 0;
                   font-family: "Satoshi-Light", sans-serif;
-                  font-size: 16px;
+                  font-size: 14px;
                   font-weight: 400;
-                  line-height: 21.6px;
+                  line-height: 18.9px;
                   text-align: left;
+                  color: #00000099;
+                }
+                .v-chip {
+                  height: 39px;
+                  padding: 10px 20px;
+                  margin-bottom: 8px;
+                }
+
+                .v-chip--selected {
+                  background-color: #000000;
+                  p {
+                    color: #ffffff;
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-    .confirm-btn {
-      margin-top: 24px;
-      height: 48px;
-      width: 100%;
-      border-radius: 1.5rem;
-      font-family: "Satoshi-Light", sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 18.9px;
-      text-align: left;
-    }
-  }
-  .product-grid {
-    margin-left: 20px;
-    width: 1000px;
-    .title-sort {
-      .title {
-        font-family: "Satoshi-Bold", sans-serif;
-        font-size: 32px;
-        font-weight: 700;
-        line-height: 43.2px;
-        text-align: left;
-      }
-      .status-sort {
-        .status {
-          font-family: "Satoshi-Light", sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 21.6px;
-          text-align: left;
-          margin-right: 12px;
-        }
-        .sort {
-          font-family: "Satoshi-Light", sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 21.6px;
-          text-align: left;
+      .products-style {
+        .v-expansion-panel {
+          .style-title {
+            padding: 0;
+            font-family: "Satoshi-Bold", sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 27px;
+            text-align: left;
+          }
+          .v-expansion-panel-text {
+            .style-lists {
+              .style-wrapper {
+                .product-style {
+                  background-color: white;
+                  color: #000000;
+                  .v-expansion-panel-title {
+                    padding: 0;
+                    font-family: "Satoshi-Light", sans-serif;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 21.6px;
+                    text-align: left;
+                  }
+                }
+              }
+            }
+          }
         }
       }
-      span {
-        padding: 2px;
-        text-transform: capitalize;
-        cursor: pointer;
-        .option {
-          font-family: "Satoshi-Medium", sans-serif;
-          font-size: 16px;
-          font-weight: 500;
-          line-height: 21.6px;
-          text-align: left;
-          letter-spacing: normal;
-        }
-        .v-icon {
-          width: 16px;
-          height: 16px;
-        }
-      }
-    }
-    .main-products {
-      margin-bottom: 14px;
-    }
-    .pagination {
-      margin-top: 20px;
-      margin-bottom: 63px;
-      position: relative;
-      .text-center {
-        font-family: "Satoshi-Medium", sans-serif;
+      .confirm-btn {
+        margin-top: 24px;
+        height: 48px;
+        width: 100%;
+        border-radius: 1.5rem;
+        font-family: "Satoshi-Light", sans-serif;
         font-size: 14px;
         font-weight: 500;
-        line-height: 20px;
-        text-align: center;
+        line-height: 18.9px;
+        text-align: left;
+      }
+    }
+    .product-grid {
+      margin-left: 20px;
+      width: 1000px;
+      .title-sort {
+        .title {
+          font-family: "Satoshi-Bold", sans-serif;
+          font-size: 32px;
+          font-weight: 700;
+          line-height: 43.2px;
+          text-align: left;
+        }
+        .status-sort {
+          .status {
+            font-family: "Satoshi-Light", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 21.6px;
+            text-align: left;
+            margin-right: 12px;
+          }
+          .sort {
+            font-family: "Satoshi-Light", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 21.6px;
+            text-align: left;
+          }
+        }
+        span {
+          padding: 2px;
+          text-transform: capitalize;
+          cursor: pointer;
+          .option {
+            font-family: "Satoshi-Medium", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 21.6px;
+            text-align: left;
+            letter-spacing: normal;
+          }
+          .v-icon {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+      .main-products {
+        margin-bottom: 14px;
+      }
+      .pagination {
+        margin-top: 20px;
+        margin-bottom: 63px;
+        position: relative;
+        .text-center {
+          font-family: "Satoshi-Medium", sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          text-align: center;
 
-        .pre-btn {
-          position: absolute;
-          left: 0;
-          background-color: #ffffff;
-          color: #000000;
-          border: 1px solid #0000001a;
-          border-radius: 8px;
-          padding: 8px 14px;
-          .wrapper {
-            .arrow-icon {
-              font-size: 20px;
+          .pre-btn {
+            position: absolute;
+            left: 0;
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #0000001a;
+            border-radius: 8px;
+            padding: 8px 14px;
+            .wrapper {
+              .arrow-icon {
+                font-size: 20px;
+              }
             }
           }
-        }
-        .next-btn {
-          position: absolute;
-          right: 0;
-          background-color: #ffffff;
-          color: #000000;
-          border: 1px solid #0000001a;
-          border-radius: 8px;
-          padding: 8px 14px;
-          .wrapper {
-            .arrow-icon {
-              font-size: 20px;
+          .next-btn {
+            position: absolute;
+            right: 0;
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #0000001a;
+            border-radius: 8px;
+            padding: 8px 14px;
+            .wrapper {
+              .arrow-icon {
+                font-size: 20px;
+              }
             }
           }
-        }
-        .pag-item {
-          width: 40px;
-          height: 40px;
-          color: #000000;
+          .pag-item {
+            width: 40px;
+            height: 40px;
+            color: #000000;
+          }
         }
       }
     }
