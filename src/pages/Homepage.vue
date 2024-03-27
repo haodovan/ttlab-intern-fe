@@ -63,29 +63,7 @@
       <v-row align="center" justify="center">
         <v-col v-for="i in 4" :key="i" cols="auto">
           <v-card :variant="i" class="mx-auto" max-width="344">
-            <v-card-item>
-              <div>
-                <div class="product-image">
-                  <v-img src="../assets/image.png"></v-img>
-                  <!-- {{ i }}  avatar -->
-                </div>
-                <div class="text-h6 mb-1">T-SHIRT WITH TAPE DETAILS</div>
-                <div class="product-rating d-flex align-center">
-                  <v-rating
-                    :model-value="rating"
-                    active-color="#FFC633"
-                    color="orange"
-                    density="compact"
-                    half-increments
-                  ></v-rating
-                  ><span>{{ rating }}/5</span>
-                </div>
-                <div class="product-price d-flex align-center">
-                  <span>$260</span> <span class="discount-price">$300</span>
-                  <v-chip>-40%</v-chip>
-                </div>
-              </div>
-            </v-card-item>
+            <ProductCard />
           </v-card>
         </v-col>
       </v-row>
@@ -102,29 +80,7 @@
       <v-row align="center" justify="center">
         <v-col v-for="i in 4" :key="i" cols="auto">
           <v-card :variant="i" class="mx-auto" max-width="344">
-            <v-card-item>
-              <div>
-                <div class="product-image">
-                  <v-img src="../assets/image.png"></v-img>
-                  <!-- {{ i }}  avatar -->
-                </div>
-                <div class="text-h6 mb-1">T-SHIRT WITH TAPE DETAILS</div>
-                <div class="product-rating d-flex align-center">
-                  <v-rating
-                    :model-value="rating"
-                    active-color="#FFC633"
-                    color="orange"
-                    density="compact"
-                    half-increments
-                  ></v-rating
-                  ><span>{{ rating }}/5</span>
-                </div>
-                <div class="product-price d-flex align-center">
-                  <span>$260</span> <span class="discount-price">$300</span>
-                  <v-chip>-40%</v-chip>
-                </div>
-              </div>
-            </v-card-item>
+            <ProductCard />
           </v-card>
         </v-col>
       </v-row>
@@ -222,6 +178,7 @@
 
 <script setup lang="ts">
 import MultiIcon from "../assets/icons/MultiIcon.vue";
+import ProductCard from "../components/ProductCard/ProductCard.vue";
 
 import { useUserStore } from "../stores/app";
 
@@ -343,28 +300,6 @@ const rating = useUserStore().rating;
 
     margin-top: 36px;
     margin-bottom: 65px;
-  }
-
-  .product-price {
-    font-family: "Satoshi-Medium", sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 43.2px;
-    text-align: left;
-
-    span {
-      margin: 12px 6px;
-    }
-
-    .discount-price {
-      text-decoration: line-through 2px;
-      color: #0000004d;
-    }
-
-    .v-chip {
-      background-color: #ff33331a;
-      color: #ff3333;
-    }
   }
 }
 

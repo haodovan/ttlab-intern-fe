@@ -1,5 +1,8 @@
 <template>
-  <v-container fluid style="padding: 0 100px">
+  <v-container
+    fluid
+    style="padding: 0 100px; background-color: #ffffff; color: #000000"
+  >
     <v-divider></v-divider>
 
     <v-breadcrumbs :items="items" style="padding: 23px 0">

@@ -1,9 +1,9 @@
 <template>
   <v-card-item class="product-wrapper">
     <div class="product-image">
-      <v-img src="../../assets/image.png"></v-img>
+      <v-img :src="src"></v-img>
     </div>
-    <div class="product-name">T-SHIRT WITH TAPE DETAILS</div>
+    <div class="product-name">T-shirt With Tape Details</div>
     <div class="product-rating d-flex align-center">
       <v-rating
         :model-value="rating"
@@ -18,7 +18,8 @@
       ><span>{{ rating }}/5</span>
     </div>
     <div class="product-price d-flex align-center">
-      <span>$260</span> <span class="discount-price">$300</span>
+      <span>$260</span>
+      <span class="discount-price">$300</span>
       <v-chip>-40%</v-chip>
     </div>
   </v-card-item>
@@ -30,7 +31,8 @@ import { useUserStore } from "../../stores/app";
 
 export default {
   setup() {
-    const { rating } = useUserStore();
+    const userStore = useUserStore();
+    const { rating, src } = userStore;
 
     const computedRating = computed(() => {
       if (typeof rating === "number" && !isNaN(rating) && rating % 1 !== 0) {
@@ -42,6 +44,8 @@ export default {
 
     return {
       computedRating,
+      rating,
+      src,
     };
   },
 };
@@ -52,36 +56,41 @@ export default {
   padding: 0;
   background-color: #ffffff;
   color: #000000;
+  width: fit-content;
 
   .product-image {
     height: 298px;
     width: 295px;
   }
   .product-name {
+    margin-top: 16px;
+    text-transform: capitalize;
+
     font-family: "Satoshi-Bold", sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 27px;
     text-align: left;
   }
   .product-rating {
+    height: 19px;
+    margin: 8px 0;
     span {
       font-family: "Satoshi-Regular", sans-serif;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
-      line-height: 21.6px;
+      line-height: 18.9px;
       text-align: left;
     }
   }
   .product-price {
-    font-family: "Satoshi-Medium", sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 43.2px;
-    text-align: left;
-
     span {
-      margin: 12px 6px;
+      font-family: "Satoshi-Medium", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32.4px;
+      text-align: left;
+      padding-right: 10px;
     }
 
     .discount-price {
@@ -92,6 +101,12 @@ export default {
     .v-chip {
       background-color: #ff33331a;
       color: #ff3333;
+      font-family: "Satoshi-Medium", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16.2px;
+      text-align: left;
+      height: 28px;
     }
   }
 }

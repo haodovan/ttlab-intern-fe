@@ -172,32 +172,7 @@
       <v-row align="center" justify="center">
         <v-col v-for="i in 4" :key="i" cols="auto">
           <v-card :variant="i" class="mx-auto" max-width="345">
-            <v-card-item style="padding: 0">
-              <div>
-                <div class="product-image">
-                  <v-img
-                    src="../assets/image.png"
-                    height="298"
-                    width="295"
-                  ></v-img>
-                </div>
-                <div class="product-name">T-SHIRT WITH TAPE DETAILS</div>
-                <div class="product-rating d-flex align-center">
-                  <v-rating
-                    :model-value="rating"
-                    active-color="#FFC633"
-                    color="orange"
-                    density="compact"
-                    half-increments
-                  ></v-rating
-                  ><span>{{ rating }}/5</span>
-                </div>
-                <div class="product-price d-flex align-center">
-                  <span>$260</span> <span class="discount-price">$300</span>
-                  <v-chip>-40%</v-chip>
-                </div>
-              </div>
-            </v-card-item>
+            <ProductCard />
           </v-card>
         </v-col>
       </v-row>
@@ -207,6 +182,7 @@
 </template>
 
 <script setup lang="ts">
+import ProductCard from "../components/ProductCard/ProductCard.vue";
 import { useUserStore } from "../stores/app";
 
 const breadcrumbItems = useUserStore().link1;
@@ -496,59 +472,6 @@ const { rating, tab } = useUserStore();
     line-height: 57.6px;
     text-align: center;
     margin-bottom: 55px;
-  }
-
-  .product-name {
-    font-family: "Satoshi-Bold", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 27px;
-    text-align: left;
-  }
-
-  .v-btn {
-    font-family: "Satoshi-Regular", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 21.6px;
-    width: 218px;
-    height: 52px;
-    border-radius: 2rem;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
-
-    margin-top: 36px;
-    margin-bottom: 65px;
-  }
-
-  .product-price {
-    font-family: "Satoshi-Bold", sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 43.2px;
-    text-align: left;
-
-    span {
-      margin: 12px 0px;
-      padding-right: 10px;
-    }
-
-    .discount-price {
-      text-decoration: line-through 2px;
-      color: #0000004d;
-    }
-
-    .v-chip {
-      background-color: #ff33331a;
-      color: #ff3333;
-      font-size: 10px;
-      font-family: "Satoshi-Regular", sans-serif;
-      font-weight: 500;
-      line-height: 16.2px;
-      text-align: left;
-      max-width: 58px;
-      max-height: 28px;
-    }
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <HeaderBar />
+  <CustomBreadcrumb :items="items" />
   <v-app class="bg-white">
-    <CustomBreadcrumb :items="items" />
     <!-- main section -->
     <v-container class="main-sector d-flex align-start justify-start" fluid>
       <div class="filter-bar">
@@ -147,9 +147,9 @@
                 <div class="d-flex flex-row align-center justify-space-around">
                   <span class="status">Showing 1-10 of 100 Products</span>
                   <span class="sort">Sort By: </span>
-                  <v-btn flat v-bind="props" color="white"
+                  <span flat v-bind="props" color="white"
                     ><span class="option">{{ selectedOption }}</span
-                    ><v-icon>mdi-chevron-down</v-icon></v-btn
+                    ><v-icon>mdi-chevron-down</v-icon></span
                   >
                 </div>
               </template>
@@ -165,13 +165,85 @@
             </v-menu>
           </div>
         </div>
-        <div class="main-products"></div>
+        <v-container class="main-products">
+          <v-row v-for="i in 3" :key="i">
+            <v-col v-for="n in 3" :key="n"><ProductCard /></v-col>
+          </v-row>
+        </v-container>
         <v-divider></v-divider>
-        <div class="pag"></div>
+        <div class="pagination">
+          <div class="text-center">
+            <v-pagination v-model="page" :length="15" :total-visible="6">
+              <template
+                v-slot:prev="{
+                  onClick,
+                  disabled,
+                  'aria-label': ariaLabel,
+                  'aria-disabled': ariaDisabled,
+                }"
+              >
+                <v-btn
+                  class="pre-btn"
+                  flat
+                  :disabled="disabled"
+                  @click="onClick"
+                  :aria-label="ariaLabel"
+                  :aria-disabled="ariaDisabled"
+                >
+                  <div
+                    class="wrapper d-flex flex-row align-center justify-center"
+                  >
+                    <v-icon class="arrow-icon">mdi-arrow-left</v-icon>
+                    <span>Previous</span>
+                  </div>
+                </v-btn>
+              </template>
+              <template
+                v-slot:next="{
+                  onClick,
+                  disabled,
+                  'aria-label': ariaLabel,
+                  'aria-disabled': ariaDisabled,
+                }"
+              >
+                <v-btn
+                  class="next-btn"
+                  flat
+                  :disabled="disabled"
+                  @click="onClick"
+                  :aria-label="ariaLabel"
+                  :aria-disabled="ariaDisabled"
+                >
+                  <div
+                    class="wrapper d-flex flex-row align-center justify-center"
+                  >
+                    <span>Next</span>
+                    <v-icon class="arrow-icon">mdi-arrow-right</v-icon>
+                  </div>
+                </v-btn>
+              </template>
+              <template v-slot:item="{ isActive, page, props }">
+                {{ console.log(page, props) }}
+                <v-btn
+                  v-if="!props.disabled"
+                  class="pag-item"
+                  flat
+                  v-bind="props"
+                  :color="isActive ? '#0000000F' : 'white'"
+                  @click="props.onClick()"
+                >
+                  {{ page }}
+                </v-btn>
+                <div class="d-flex align-end" style="height: 80%" v-else>
+                  <span>{{ page }}</span>
+                </div>
+              </template>
+            </v-pagination>
+          </div>
+        </div>
       </div>
     </v-container>
   </v-app>
-
   <FooterBar />
 </template>
 
@@ -179,8 +251,10 @@
 import { useUserStore } from "../stores/app";
 import { computed, ref } from "vue";
 
-const items = useUserStore().link2;
-const { productList, colors, sizes, styles } = useUserStore();
+const userStore = useUserStore();
+const { link2: items, productList, colors, sizes, styles } = userStore;
+
+const page = ref(1);
 
 const value = ref([50, 200]);
 const formattedValue = computed(() => {
@@ -400,9 +474,10 @@ const selectOption = (option) => {
           text-align: left;
         }
       }
-      .v-btn {
+      span {
         padding: 2px;
         text-transform: capitalize;
+        cursor: pointer;
         .option {
           font-family: "Satoshi-Medium", sans-serif;
           font-size: 16px;
@@ -414,6 +489,55 @@ const selectOption = (option) => {
         .v-icon {
           width: 16px;
           height: 16px;
+        }
+      }
+    }
+    .main-products {
+      margin-bottom: 14px;
+    }
+    .pagination {
+      margin-top: 20px;
+      margin-bottom: 63px;
+      position: relative;
+      .text-center {
+        font-family: "Satoshi-Medium", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: center;
+
+        .pre-btn {
+          position: absolute;
+          left: 0;
+          background-color: #ffffff;
+          color: #000000;
+          border: 1px solid #0000001a;
+          border-radius: 8px;
+          padding: 8px 14px;
+          .wrapper {
+            .arrow-icon {
+              font-size: 20px;
+            }
+          }
+        }
+        .next-btn {
+          position: absolute;
+          right: 0;
+          background-color: #ffffff;
+          color: #000000;
+          border: 1px solid #0000001a;
+          border-radius: 8px;
+          padding: 8px 14px;
+          .wrapper {
+            .arrow-icon {
+              font-size: 20px;
+            }
+          }
+        }
+        .pag-item {
+          width: 40px;
+          height: 40px;
+          color: #000000;
         }
       }
     }

@@ -39,7 +39,7 @@ const link2 = [
   },
 ];
 const tab = ref("Rating & Reviews");
-const rating = ref(4.5);
+const rating = ref(2.5);
 const productList = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
 const colors = [
   "#00C12B",
@@ -65,6 +65,7 @@ const sizes = [
   "4X-Large",
 ];
 const styles = ["Casual", "Formal", "Party", "Gym"];
+const src = "../../../public/image.png";
 
 // Tạo store
 export const useUserStore = defineStore({
@@ -81,6 +82,7 @@ export const useUserStore = defineStore({
     colors,
     sizes,
     styles,
+    src,
   }),
   actions: {},
 });
