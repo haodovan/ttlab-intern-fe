@@ -84,7 +84,7 @@
           class="product-tab text-capitalize bg-white"
           style="max-width: 33.3333333%"
         >
-          <span>{{ text }}</span> {{ console.log(tab) }}
+          <span>{{ text }}</span>
         </v-tab>
       </v-tabs>
 

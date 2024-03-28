@@ -186,6 +186,7 @@
                   class="pre-btn"
                   flat
                   :disabled="disabled"
+                  :color="disabled ? '#0000000F' : 'white'"
                   @click="onClick"
                   :aria-label="ariaLabel"
                   :aria-disabled="ariaDisabled"
@@ -210,6 +211,7 @@
                   class="next-btn"
                   flat
                   :disabled="disabled"
+                  :color="disabled ? '#0000000F' : 'white'"
                   @click="onClick"
                   :aria-label="ariaLabel"
                   :aria-disabled="ariaDisabled"
@@ -223,7 +225,7 @@
                 </v-btn>
               </template>
               <template v-slot:item="{ isActive, page, props }">
-                {{ console.log(page, props) }}
+                <!-- {{ console.log(page, props) }} -->
                 <v-btn
                   v-if="!props.disabled"
                   class="pag-item"
