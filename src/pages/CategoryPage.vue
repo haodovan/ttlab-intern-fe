@@ -1,6 +1,8 @@
 <template>
-  <HeaderBar />
-  <CustomBreadcrumb :items="links" />
+  <v-app-bar>
+    <HeaderBar />
+  </v-app-bar>
+  <CustomBreadcrumb class="pt-16" :items="links" />
   <v-app class="category-page">
     <!-- main section -->
     <v-container class="main-sector d-flex align-start justify-start" fluid>
@@ -186,7 +188,7 @@
                   class="pre-btn"
                   flat
                   :disabled="disabled"
-                  :color="disabled ? '#0000000F' : 'white'"
+                  :color="white"
                   @click="onClick"
                   :aria-label="ariaLabel"
                   :aria-disabled="ariaDisabled"
@@ -211,7 +213,7 @@
                   class="next-btn"
                   flat
                   :disabled="disabled"
-                  :color="disabled ? '#0000000F' : 'white'"
+                  :color="white"
                   @click="onClick"
                   :aria-label="ariaLabel"
                   :aria-disabled="ariaDisabled"

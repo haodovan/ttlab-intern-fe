@@ -1,24 +1,20 @@
 <template>
   <!-- advertise -->
-  <v-app-bar class="advertise" height="38">
-    <v-container class="d-flex justify-center">
+  <div class="advertise d-flex justify-center align-center bg-black">
+    <div class="d-flex justify-center align-center">
       <span>Sign up and get 20% off to your first order.</span>
       <a>Sign Up Now</a>
-    </v-container>
-    <v-icon class="mr-5">mdi:mdi-close</v-icon>
-  </v-app-bar>
+    </div>
+    <v-icon class="hidden-sm-and-down">mdi:mdi-close</v-icon>
+  </div>
   <!-- Navbar -->
-  <v-app-bar flat class="bg-white" height="100" style="padding: 0 100px">
-    <v-container
-      class="d-flex align-center justify-space-between"
-      fluid
-      style="padding: 0"
-    >
-      <v-flex cols="1" class="d-flex align-center justify-center">
-        <v-icon class="hidden-lg-and-up">mdi-menu</v-icon>
+  <div flat class="navbar bg-white">
+    <div class="wrapper d-flex align-center justify-start">
+      <div class="logo-wrapper d-flex align-center justify-center">
+        <v-icon class="menu hidden-lg-and-up">mdi-menu</v-icon>
         <span class="logo">SHOP.CO</span>
-      </v-flex>
-      <v-flex cols="3" class="links d-flex hidden-sm-and-down">
+      </div>
+      <div class="link-nav d-flex hidden-sm-and-down">
         <v-menu>
           <template v-slot:activator="{ props }">
             <v-btn
@@ -46,8 +42,8 @@
         <v-btn class="nav-btn text-capitalize hidden-sm-and-down" variant="text"
           >Brands</v-btn
         >
-      </v-flex>
-      <v-col cols="5" class="hidden-md-and-down">
+      </div>
+      <div class="search-bar-wrapper d-flex align-center hidden-md-and-down">
         <v-text-field
           class="hidden-md-and-down search-bar"
           label="Search for products..."
@@ -60,15 +56,24 @@
           prepend-inner-icon="mdi:mdi-magnify"
           bg-color="#f0f0f0"
         ></v-text-field>
-      </v-col>
-      <v-col cols="1">
+      </div>
+      <div>
         <div class="icon-wrapper">
-          <v-icon aria-hidden="false" icon="mdi:mdi-cart-outline" />
+          <v-icon
+            class="hidden-md-and-up"
+            aria-hidden="false"
+            icon="mdi:mdi-magnify"
+          />
+          <v-icon
+            class="cart-icon"
+            aria-hidden="false"
+            icon="mdi:mdi-cart-outline"
+          />
           <v-icon aria-hidden="false" icon="mdi:mdi-account-circle-outline" />
         </div>
-      </v-col>
-    </v-container>
-  </v-app-bar>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -78,61 +83,123 @@ const links = useUserStore().lists;
 
 <style lang="scss" scoped>
 .advertise {
-  span {
-    font-family: "Satoshi-Regular", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18.9px;
-    text-align: left;
-  }
-  a {
-    cursor: pointer;
-    font-family: "Satoshi-Regular", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18.9px;
-    text-align: left;
-    text-decoration: underline;
-    padding-left: 2px;
+  height: 38px;
+  z-index: 2000;
+  position: fixed !important;
+  width: 100vw !important;
+  top: 0;
+  padding: 0 100px;
+  div {
+    width: 100vw !important;
+    span {
+      font-family: "Satoshi-Regular", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18.9px;
+      text-align: left;
+    }
+    a {
+      cursor: pointer;
+      font-family: "Satoshi-Regular", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18.9px;
+      text-align: left;
+      text-decoration: underline;
+      padding-left: 2px;
+    }
   }
 }
-.v-app-bar {
-  .nav-btn {
-    font-family: "Satoshi-Regular", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 21.6px;
-    text-align: left;
-  }
+.navbar {
+  z-index: 1000;
+  position: fixed !important;
+  width: 100vw !important;
+  top: 38px !important;
+  padding: 12px 0;
+  .wrapper {
+    padding: 0 100px;
+    .logo-wrapper {
+      margin-right: 28px;
+      .logo {
+        font-family: "Integralcf-Bold", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 38.4px;
+        text-align: left;
+        margin-bottom: 8px;
+      }
+    }
 
-  .logo {
-    font-family: "Integralcf-Bold", sans-serif;
-    font-size: 32px;
-    font-weight: 1000;
-    line-height: 38.4px;
-    text-align: left;
-    padding-left: 0;
-    margin-bottom: 8px;
-  }
+    .link-nav {
+      display: flex;
+      margin-right: 40px;
+      .nav-btn {
+        font-family: "Satoshi-Regular", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 21.6px;
+        text-align: left;
+        padding: 0 12px;
+      }
+    }
+    .search-bar-wrapper {
+      height: 72px;
+      width: 577px;
+      margin-right: 40px;
+      .search-bar {
+        font-family: "Satoshi-Regular", sans-serif;
+        font-size: 16px;
+        line-height: 21.6px;
+        text-align: left;
+        background-color: #f0f0f0 !important;
+        border: 1px solid #f0f0f0;
+        border-radius: 62px;
+      }
+    }
 
-  .icon-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .icon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cart-icon {
+        margin: 0 14px;
+      }
+    }
   }
+}
 
-  .links {
-    display: flex;
+@media only screen and (max-width: 600px) and (min-width: 320px) {
+  .advertise {
+    height: 34px;
+    padding: 0;
+    div {
+      span {
+        font-size: 12px;
+        line-height: 16.2px;
+      }
+      a {
+        font-size: 12px;
+        line-height: 16.2px;
+      }
+    }
   }
-
-  .search-bar {
-    font-family: "Satoshi-Regular", sans-serif;
-    font-size: 16px;
-    line-height: 21.6px;
-    text-align: left;
-    background-color: #f0f0f0 !important;
-    border: 1px solid #f0f0f0;
-    border-radius: 62px;
+  .navbar {
+    top: 34px !important;
+    padding: 0;
+    .wrapper {
+      padding: 0 16px;
+      height: 64px;
+      .logo-wrapper {
+        .menu {
+          margin-right: 16px;
+        }
+        .logo {
+          font-size: 18px;
+          line-height: 30.24px;
+          margin-bottom: 4px;
+        }
+      }
+    }
   }
 }
 </style>

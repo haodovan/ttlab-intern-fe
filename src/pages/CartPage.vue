@@ -1,6 +1,8 @@
 <template>
-  <HeaderBar />
-  <CustomBreadcrumb :items="links" />
+  <v-app-bar>
+    <HeaderBar />
+  </v-app-bar>
+  <CustomBreadcrumb class="pt-16" :items="links" />
   <v-app class="your-cart">
     <v-container class="main-sector" fluid>
       <h1>Your Cart</h1>

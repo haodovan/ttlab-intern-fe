@@ -1,6 +1,8 @@
 <template>
-  <HeaderBar />
-  <v-app class="bg-white">
+  <v-app-bar>
+    <HeaderBar />
+  </v-app-bar>
+  <v-app class="bg-white pt-16">
     <CustomBreadcrumb :items="breadcrumbItems" />
 
     <!-- Product section -->
