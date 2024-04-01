@@ -1,5 +1,5 @@
 <template>
-  <div class="footer-wrapper pt-16 d-flex flex-column">
+  <div class="footer-wrapper pt-10 d-flex flex-column">
     <!-- SUBSCRIBE -->
     <div class="wrapper d-flex align-center justify-space-between bg-black">
       <h1 class="subscribe-header">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
@@ -200,11 +200,13 @@ const icons = useUserStore().icons;
 @media only screen and (max-width: 600px) and (min-width: 320px) {
   .footer-wrapper {
     padding: 0;
+
     .wrapper {
       max-width: calc(100vw - 32px);
       flex-wrap: wrap;
       height: 297px;
       padding: 0;
+      top: -140px;
 
       .subscribe-header {
         font-size: 32px;
@@ -217,10 +219,14 @@ const icons = useUserStore().icons;
         flex-direction: column;
         align-content: center;
         justify-content: center;
+        margin-left: 24px;
         .input-email {
-          margin-left: 24px;
           max-width: calc(100vw - 100px);
           height: 42px;
+        }
+        .v-text-field {
+          width: 333px;
+          height: 50px;
         }
       }
     }
@@ -235,6 +241,13 @@ const icons = useUserStore().icons;
             margin: 4px 0 20px 0;
           }
         }
+      }
+      .v-divider {
+        margin-top: 40px;
+        margin-bottom: 16px;
+      }
+      .badges {
+        justify-content: center !important;
       }
     }
   }
