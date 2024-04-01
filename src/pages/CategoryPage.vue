@@ -188,7 +188,7 @@
                   class="pre-btn"
                   flat
                   :disabled="disabled"
-                  :color="white"
+                  color="white"
                   @click="onClick"
                   :aria-label="ariaLabel"
                   :aria-disabled="ariaDisabled"
@@ -213,7 +213,7 @@
                   class="next-btn"
                   flat
                   :disabled="disabled"
-                  :color="white"
+                  color="white"
                   @click="onClick"
                   :aria-label="ariaLabel"
                   :aria-disabled="ariaDisabled"

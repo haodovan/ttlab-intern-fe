@@ -110,4 +110,39 @@ export default {
     }
   }
 }
+
+@media only screen and (max-width: 600px) and (min-width: 320px) {
+  .product-wrapper {
+    .product-image {
+      width: 198px;
+      height: 200.01px;
+    }
+    .product-name {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 21.6px;
+    }
+    .product-rating {
+      height: 15px;
+      margin: 4px 0;
+      span {
+        font-size: 12px;
+        line-height: 16.2px;
+      }
+    }
+    .product-price {
+      span {
+        font-size: 20px;
+        line-height: 27px;
+      }
+      .discount-price {
+        text-decoration: line-through 1px;
+      }
+      .v-chip {
+        font-size: 10px;
+        line-height: 13.5px;
+      }
+    }
+  }
+}
 </style>

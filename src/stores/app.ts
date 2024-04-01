@@ -51,7 +51,7 @@ const link3 = [
   },
 ];
 const tab = ref("Rating & Reviews");
-const rating = ref(2.5);
+const rating = ref(4.5);
 const productList = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
 const colors = [
   "#00C12B",

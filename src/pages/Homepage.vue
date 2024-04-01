@@ -44,16 +44,16 @@
     </section>
     <!-- brands name -->
     <v-container class="brands d-flex bg-black justify-space-evenly" fluid>
-      <img src="../assets/brands/Groupversace.png" />
-      <img src="../assets/brands/zara-logo-1 1zara.png" />
-      <img src="../assets/brands/gucci-logo-1 1gucci.png" />
-      <img src="../assets/brands/prada-logo-1 1prada.png" />
-      <img src="../assets/brands/Groupklein.png" />
+      <img class="brand-icon" src="../assets/brands/Groupversace.png" />
+      <img class="brand-icon" src="../assets/brands/zara-logo-1 1zara.png" />
+      <img class="brand-icon" src="../assets/brands/gucci-logo-1 1gucci.png" />
+      <img class="brand-icon" src="../assets/brands/prada-logo-1 1prada.png" />
+      <img class="brand-icon" src="../assets/brands/Groupklein.png" />
     </v-container>
     <!-- New Arrivals -->
-    <v-container class="new-arrivals" fluid style="padding: 0 100px">
+    <v-container class="selling-section" fluid>
       <h1>NEW ARRIVALS</h1>
-      <v-row align="center" justify="center">
+      <v-row class="d-flex align-center justify-space-evenly">
         <v-col v-for="i in 4" :key="i" cols="auto">
           <v-card :variant="i" class="mx-auto" max-width="344">
             <ProductCard />
@@ -62,11 +62,11 @@
       </v-row>
       <v-btn color="white">View All</v-btn>
     </v-container>
-    <v-container fluid style="padding: 0 50px">
-      <v-divider inset></v-divider>
-    </v-container>
+    <div class="div-divider">
+      <hr />
+    </div>
     <!-- TOP SELLING -->
-    <v-container class="new-arrivals" fluid style="padding: 0 100px">
+    <v-container class="selling-section" fluid>
       <h1>TOP SELLING</h1>
       <v-row align="center" justify="center">
         <v-col v-for="i in 4" :key="i" cols="auto">
@@ -78,104 +78,126 @@
       <v-btn color="white">View All</v-btn>
     </v-container>
     <!-- DRESS STYLE -->
-    <v-container class="dress-style" fluid style="padding: 0 100px">
+    <v-container class="dress-style" fluid>
       <v-card :elevation="0" style="border-radius: 2rem">
         <h1>BROWSE BY DRESS STYLE</h1>
-        <v-container>
+        <v-container class="dress-wrapper">
           <v-card
             class="style-card"
             style="height: 289px; width: 407px"
             image="../assets/casual.png"
           >
-            <span style="position: absolute; top: 25px; left: 36px"
-              >Casual</span
-            >
+            <span>Casual</span>
           </v-card>
           <v-card
             class="style-card"
             style="height: 289px; width: 684px"
             image="../assets/formal.png"
           >
-            <span style="position: absolute; top: 25px; left: 36px"
-              >Formal</span
-            >
+            <span>Formal</span>
           </v-card>
           <v-card
             class="style-card"
             style="height: 289px; width: 684px"
             image="../assets/party.png"
           >
-            <span style="position: absolute; top: 25px; left: 36px">Party</span>
+            <span>Party</span>
           </v-card>
           <v-card
             class="style-card"
             style="height: 289px; width: 407px"
             image="../assets/Gym.png"
           >
-            <span style="position: absolute; top: 25px; left: 36px">Gym</span>
+            <span>Gym</span>
           </v-card>
         </v-container>
       </v-card>
     </v-container>
     <!-- REVIEWS -->
-    <v-container class="reviews" fluid>
-      <h1>OUR HAPPY CUSTOMERS</h1>
+    <v-container class="reviews" fluid style="position: relative">
+      <div class="header-wrapper d-flex align-end justify-space-between">
+        <h1>OUR HAPPY CUSTOMERS</h1>
+        <div class="d-flex">
+          <v-icon class="slide-btn-right" @click="handlePrev" large
+            >mdi-arrow-left</v-icon
+          >
+          <v-icon class="slide-btn-left" @click="handleNext" large
+            >mdi-arrow-right</v-icon
+          >
+        </div>
+      </div>
       <v-card elevation="0" color="white">
-        <v-slide-group next-icon="" prev-icon="" center-active>
-          <v-slide-group-item v-slot="{ toggle }">
-            <div style="display: flex; justify-content: end">
-              <v-icon @click="toggle">mdi-arrow-left</v-icon>
-              <v-icon @click="toggle">mdi-arrow-right</v-icon>
-            </div>
-            <v-card
-              class="review-card"
-              color="white"
-              width="400"
-              elevation="0"
-              v-for="n in 15"
-              :key="n"
-            >
-              <div class="product-rating d-flex align-center">
-                <v-rating
-                  :model-value="rating"
-                  active-color="#FFC633"
-                  color="orange"
-                  density="compact"
-                  half-increments
-                ></v-rating
-                ><span>{{ rating }}/5</span>
+        <v-slide-group
+          mobile-break-point="2000"
+          show-arrows="false"
+          center-active
+          next-icon=""
+          prev-icon=""
+          v-model="selectedSlide"
+        >
+          <v-slide-group-item v-for="n in 15" :key="n">
+            <v-card class="review-card" color="white" elevation="0">
+              <div class="card-wrapper">
+                <div class="product-rating d-flex align-center">
+                  <v-rating
+                    :model-value="rating"
+                    active-color="#FFC633"
+                    color="orange"
+                    density="compact"
+                    half-increments
+                    readonly
+                    emptyIcon=""
+                  ></v-rating>
+                </div>
+                <v-card-title>
+                  <span>Sarah M. </span>
+                  <v-icon size="small" color="green"
+                    >mdi-checkbox-marked-circle</v-icon
+                  >
+                </v-card-title>
+                <v-card-text>
+                  "I'm blown away by the quality and style of the clothes I
+                  received from Shop.co. From casual wear to elegant dresses,
+                  every piece I've bought has exceeded my expectations.”
+                </v-card-text>
               </div>
-              <v-card-title
-                ><span>Sarah M. </span
-                ><v-icon size="small" color="green"
-                  >mdi:mdi-checkbox-marked-circle</v-icon
-                ></v-card-title
-              >
-              <v-card-text
-                >"I'm blown away by the quality and style of the clothes I
-                received from Shop.co. From casual wear to elegant dresses,
-                every piece I've bought has exceeded my
-                expectations.”</v-card-text
-              >
             </v-card>
           </v-slide-group-item>
         </v-slide-group>
       </v-card>
     </v-container>
-    <FooterBar />
   </v-app>
+  <v-footer color="#f0f0f0">
+    <FooterBar />
+  </v-footer>
 </template>
 
-<script setup lang="ts">
-import MultiIcon from "../assets/icons/MultiIcon.vue";
-import ProductCard from "../components/ProductCard/ProductCard.vue";
-
+<script lang="ts">
 import { useUserStore } from "../stores/app";
+import { ref } from "vue";
 
-const rating = useUserStore().rating;
+export default {
+  setup() {
+    const selectedSlide = ref(2);
+    const handleNext = () => {
+      selectedSlide.value = (selectedSlide.value + 1) % 15;
+    };
+
+    const handlePrev = () => {
+      selectedSlide.value = (selectedSlide.value - 1 + 15) % 15;
+    };
+
+    const rating = useUserStore().rating;
+
+    return { rating, selectedSlide, handleNext, handlePrev };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+::-webkit-scrollbar {
+  width: 14px;
+}
 .vue-app {
   margin-top: 52px;
   .main-content {
@@ -270,26 +292,33 @@ const rating = useUserStore().rating;
   }
 
   .brands {
+    /* padding: 0 100px; */
     height: 122px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 5;
+
+    .brand-icon {
+      /* width: 166.48px; */
+      height: 33.16px;
+    }
   }
 
-  .new-arrivals {
+  .selling-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 100px;
 
     h1 {
       font-family: "Integralcf-Bold", sans-serif;
       font-size: 48px;
-      font-weight: 1000;
+      font-weight: 700;
       line-height: 57.6px;
       text-align: center;
-      margin-top: 70px;
+      margin-top: 64px;
       margin-bottom: 55px;
     }
 
@@ -305,12 +334,17 @@ const rating = useUserStore().rating;
       opacity: 0px;
 
       margin-top: 36px;
-      margin-bottom: 65px;
+      margin-bottom: 64px;
+      text-transform: capitalize;
     }
+  }
+  .div-divider {
+    padding: 0 86px 0 100px;
   }
 
   .dress-style {
-    height: 1000px;
+    /* height: 1000px; */
+    padding: 0 100px;
 
     .v-card {
       color: black;
@@ -339,6 +373,9 @@ const rating = useUserStore().rating;
             font-family: "Satoshi-Regular", sans-serif;
             font-size: 36px;
             font-weight: 700;
+            position: absolute;
+            top: 25px;
+            left: 36px;
           }
         }
       }
@@ -346,25 +383,35 @@ const rating = useUserStore().rating;
   }
 
   .reviews {
+    margin-top: 80px;
     margin-bottom: 170px;
-    padding: 0 100px;
-    h1 {
-      font-family: "Integralcf-Bold", sans-serif;
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 57.6px;
-      text-align: left;
+    padding: 0;
+    .header-wrapper {
+      padding: 0 86px 0 100px;
+      h1 {
+        font-family: "Integralcf-Bold", sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 57.6px;
+        text-align: left;
+      }
     }
 
     .review-card {
+      width: 400px;
       margin-top: 40px;
-      margin-right: 10px;
+      margin-right: 20px;
       padding: 30px 15px;
       border: 1px solid #f0f0f0;
       border-radius: 1rem;
-
-      .v-card-text {
-        padding-bottom: 0;
+      .card-wrapper {
+        width: 371px;
+        .v-card-text {
+          padding-bottom: 0;
+        }
+        .product-rating {
+          margin-left: 16px;
+        }
       }
     }
   }
@@ -451,7 +498,60 @@ const rating = useUserStore().rating;
       flex-wrap: wrap;
 
       .brand-icon {
-        width: 65%;
+        /* width: 116.74px; */
+        height: 23.25px;
+      }
+    }
+    .selling-section {
+      padding: 0;
+      h1 {
+        font-size: 32px;
+        line-height: 38.4px;
+        margin: 40px 0 32px 0;
+      }
+      .v-btn {
+        font-size: 14px;
+        line-height: 18.9px;
+        padding: 13px 179px;
+        border-radius: 62px;
+
+        margin-top: 28px;
+        margin-bottom: 40px;
+      }
+    }
+    .div-divider {
+      padding: 0 16px;
+    }
+    .dress-style {
+      padding: 0 16px;
+      .v-card {
+        h1 {
+          font-size: 32px;
+          line-height: 36px;
+          padding: 40px 56px 12px 56px;
+          margin: 0;
+        }
+        .v-container {
+          margin: 0;
+          .style-card {
+            span {
+              font-size: 24px;
+              line-height: 32.4px;
+            }
+          }
+        }
+      }
+    }
+    .reviews {
+      margin-top: 50px;
+      margin-bottom: 170px;
+      padding: 0;
+      .header-wrapper {
+        padding: 0 16px;
+        h1 {
+          font-size: 32px;
+          line-height: 36px;
+        }
       }
     }
   }
