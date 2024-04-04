@@ -9,11 +9,14 @@
   >
     <v-list-item class="logo d-flex justify-space-between align-center" nav>
       <template v-slot:prepend>
-        <img class="company-logo" src="../assets/logo/ttlab - logo ngang.png" />
+        <img
+          class="company-logo"
+          src="../../assets/logo/ttlab - logo ngang.png"
+        />
       </template>
       <template v-slot:append>
         <v-icon @click.stop="rail = !rail"
-          ><img src="../assets/icons/indent-decrease.png"
+          ><img src="../../assets/icons/indent-decrease.png"
         /></v-icon>
       </template>
     </v-list-item>
@@ -22,14 +25,17 @@
 
     <v-list class="link-list" density="compact" nav>
       <span class="section-name" v-show="!rail">Quản lý sản phẩm</span>
-      <v-list-item class="san-pham" title="Sản phẩm" value="1">
+      <v-list-item class="san-pham" title="Sản phẩm" value="1" selected>
         <template v-slot:prepend>
           <v-icon :data-rail="rail.toString()">mdi-cube-outline</v-icon>
         </template>
       </v-list-item>
       <v-list-item title="Users" value="2">
         <template v-slot:prepend>
-          <img :data-rail="rail.toString()" src="../assets/icons/users.png" />
+          <img
+            :data-rail="rail.toString()"
+            src="../../assets/icons/users.png"
+          />
         </template>
       </v-list-item>
     </v-list>

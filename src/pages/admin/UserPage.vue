@@ -2,7 +2,7 @@
   <Sidebar />
   <div class="main">
     <v-nav class="navbar d-flex align-center justify-space-between">
-      <h1>Danh sách sản phẩm</h1>
+      <h1>Danh sách người dùng</h1>
       <div>
         <v-icon>mdi-bell-outline</v-icon>
         <v-avatar
@@ -10,13 +10,13 @@
         ></v-avatar>
       </div>
     </v-nav>
-    <DataTable />
+    <UserTable />
   </div>
 </template>
 
 <script>
 import Sidebar from "../../components/Bars/Sidebar.vue";
-import DataTable from "../../components/Tables/DataTable.vue";
+import UserTable from "../../components/Tables/UserTable.vue";
 </script>
 
 <style lang="scss" scoped>

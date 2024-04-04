@@ -173,6 +173,8 @@
 </template>
 
 <script lang="ts">
+import FooterBar from "../components/Bars/FooterBar.vue";
+import HeaderBar from "../components/Bars/HeaderBar.vue";
 import { useUserStore } from "../stores/app";
 import { ref } from "vue";
 

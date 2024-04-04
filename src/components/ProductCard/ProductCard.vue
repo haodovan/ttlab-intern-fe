@@ -6,6 +6,8 @@
     <div class="product-name">T-shirt With Tape Details</div>
     <div class="product-rating d-flex align-center">
       <v-rating
+        class="hidden-md-and-up"
+        style="padding-bottom: 5px"
         :model-value="rating"
         active-color="#FFC633"
         color="orange"
@@ -14,8 +16,20 @@
         readonly
         :length="computedRating"
         half-increments
-      ></v-rating
-      ><span>{{ rating }}/5</span>
+        size="x-small"
+      ></v-rating>
+      <v-rating
+        class="hidden-md-and-down"
+        :model-value="rating"
+        active-color="#FFC633"
+        color="orange"
+        density="compact"
+        emptyIcon=""
+        readonly
+        :length="computedRating"
+        half-increments
+      ></v-rating>
+      <span>{{ rating }}/5</span>
     </div>
     <div class="product-price d-flex align-center">
       <span>$260</span>

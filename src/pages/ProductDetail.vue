@@ -182,6 +182,8 @@
 </template>
 
 <script setup lang="ts">
+import FooterBar from "../components/Bars/FooterBar.vue";
+import HeaderBar from "../components/Bars/HeaderBar.vue";
 import ProductCard from "../components/ProductCard/ProductCard.vue";
 import { useUserStore } from "../stores/app";
 

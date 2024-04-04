@@ -9,14 +9,15 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     CustomBreadcrumb: typeof import('./components/CustomBreadcrumb/CustomBreadcrumb.vue')['default']
-    DataTable: typeof import('./components/DataTable.vue')['default']
-    FooterBar: typeof import('./components/FooterBar.vue')['default']
+    DataTable: typeof import('./components/Tables/DataTable.vue')['default']
+    FooterBar: typeof import('./components/Bars/FooterBar.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
-    HeaderBar: typeof import('./components/HeaderBar.vue')['default']
+    HeaderBar: typeof import('./components/Bars/HeaderBar.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     ProductCard: typeof import('./components/ProductCard/ProductCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Sidebar: typeof import('./components/Sidebar.vue')['default']
+    Sidebar: typeof import('./components/Bars/Sidebar.vue')['default']
+    UserTable: typeof import('./components/Tables/UserTable.vue')['default']
   }
 }

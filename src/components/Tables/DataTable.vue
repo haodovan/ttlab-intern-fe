@@ -291,7 +291,12 @@ export default {
     .v-btn {
       background-color: #0f60ff;
       color: #ffffff;
-      text-transform: capitalize;
+      text-transform: none;
+      font-family: Public Sans, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16px;
+      text-align: center;
     }
   }
   .action-col {

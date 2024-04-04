@@ -70,11 +70,11 @@
       <div class="badges d-flex flex-wrap align-center justify-space-between">
         <span>© 2000-2021, All rights reserved</span>
         <div style="display: flex">
-          <img src="../assets/Badge1.png" />
-          <img src="../assets/Badge2.png" />
-          <img src="../assets/Badge3.png" />
-          <img src="../assets/Badge4.png" />
-          <img src="../assets/Badge5.png" />
+          <img src="../../assets/Badge1.png" />
+          <img src="../../assets/Badge2.png" />
+          <img src="../../assets/Badge3.png" />
+          <img src="../../assets/Badge4.png" />
+          <img src="../../assets/Badge5.png" />
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@
 
 <script setup lang="ts">
 // import { ref } from 'vue';
-import { useUserStore } from "../stores/app";
+import { useUserStore } from "../../stores/app";
 
 const icons = useUserStore().icons;
 </script>

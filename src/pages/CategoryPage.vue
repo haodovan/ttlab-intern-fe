@@ -252,6 +252,8 @@
 </template>
 
 <script setup lang="ts">
+import FooterBar from "../components/Bars/FooterBar.vue";
+import HeaderBar from "../components/Bars/HeaderBar.vue";
 import { useUserStore } from "../stores/app";
 import { computed, ref } from "vue";
 
