@@ -70,7 +70,7 @@
       <h1>TOP SELLING</h1>
       <v-row align="center" justify="center">
         <v-col v-for="i in 4" :key="i" cols="auto">
-          <v-card :variant="i" class="mx-auto" max-width="344">
+          <v-card :variant="i">
             <ProductCard />
           </v-card>
         </v-col>

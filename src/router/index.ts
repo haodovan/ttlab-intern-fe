@@ -4,6 +4,7 @@ import ProductDetail from "../pages/ProductDetail.vue";
 import CategoryPage from "../pages/CategoryPage.vue";
 import CartPage from "../pages/CartPage.vue";
 import LoginPage from "../pages/admin/LoginPage.vue";
+import ProductPage from "../pages/admin/ProductPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/", redirect: "/login" },
@@ -12,6 +13,7 @@ const routes: Array<RouteRecordRaw> = [
   { name: "category-page", path: "/category-page", component: CategoryPage },
   { name: "your-cart", path: "/your-cart", component: CartPage },
   { name: "login", path: "/login", component: LoginPage },
+  { name: "product-manager", path: "/product-manager", component: ProductPage },
 ];
 
 const router = createRouter({

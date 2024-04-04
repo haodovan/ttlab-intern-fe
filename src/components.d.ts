@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     CustomBreadcrumb: typeof import('./components/CustomBreadcrumb/CustomBreadcrumb.vue')['default']
+    DataTable: typeof import('./components/DataTable.vue')['default']
     FooterBar: typeof import('./components/FooterBar.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     HeaderBar: typeof import('./components/HeaderBar.vue')['default']
@@ -16,5 +17,6 @@ declare module 'vue' {
     ProductCard: typeof import('./components/ProductCard/ProductCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Sidebar: typeof import('./components/Sidebar.vue')['default']
   }
 }

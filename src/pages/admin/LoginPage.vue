@@ -1,18 +1,34 @@
 <template>
   <div class="container bg-white d-flex justify-center">
     <div class="wrapper">
-      <img src="../../assets/ttlab-logo.png" />
+      <img src="../../assets/logo/ttlab-logo.png" />
       <h1>Đăng nhập</h1>
       <div class="dang-nhap">
         <v-form class="form d-flex flex-column align-start" @submit.prevent>
           <label for="Email">Email</label>
-          <input name="Email" type="text" placeholder="Nhập email" />
+          <input
+            type="text"
+            name="Email"
+            class="email-input"
+            required="required"
+            placeholder="Nhập email"
+          />
           <label for="Password">Mật khẩu</label>
-          <input name="Password" type="text" />
-          <div class="forgot-password"></div>
-          <v-btn class="mt-2 dang-ky" type="submit" block>Đăng nhập</v-btn>
+          <input
+            type="text"
+            name="Password"
+            class="email-input"
+            required="required"
+            placeholder="Nhập password"
+          />
+          <div class="forgot-password d-flex align-center">
+            <input type="checkbox" />
+            <span>Ghi nhớ đăng nhập</span>
+            <a href="/">Quên mật khẩu</a>
+          </div>
+          <v-btn class="dang-ky" flat type="submit" block>Đăng nhập</v-btn>
           <div class="action">
-            <span>Bạn chưa có tài khoản?</span>
+            <span>Bạn chưa có tài khoản? </span>
             <a>Đăng ký</a>
           </div>
         </v-form>
@@ -25,16 +41,12 @@
 
 <style lang="scss" scoped>
 .container {
-  width: 100vw;
-  height: 100vh;
-
   .wrapper {
     margin-top: 119px;
-    width: 426px;
+    max-width: 426px;
 
     img {
-      width: 108px;
-      height: 60px;
+      max-width: 108px;
       margin-bottom: 24px;
       margin: 0 159px;
     }
@@ -45,20 +57,25 @@
       font-weight: 600;
       line-height: 48px;
       text-align: left;
-      margin: 0 130px 32px 130px;
+      margin: 18px 130px 32px 130px;
     }
-
     .dang-nhap {
       .form {
-        input {
+        .email-input {
           width: 425px;
           height: 32px;
-          padding: 6px 12px 6px 12px;
-          border-radius: 6px 0px 0px 0px;
-          margin-bottom: 24px;
+          border: 1px solid #868fa029;
+          box-shadow: 0px 1px 2px 0px #0000000f;
+          border-radius: 0.5rem;
+          padding: 6px 12px;
+
+          font-family: Public Sans, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          text-align: left;
           color: #a1a9b8;
-          height: 32px;
-          box-shadow: 0px 0px 0px 1px #868fa029;
+          margin-bottom: 24px;
         }
         label {
           font-family: Public Sans, sans-serif;
@@ -68,9 +85,31 @@
           letter-spacing: 0.02em;
           text-align: left;
           color: #464f60;
+          margin-bottom: 8px;
+        }
+        .forgot-password {
+          max-width: 426px;
+          font-family: Public Sans, sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          text-align: left;
+
+          input {
+            margin-right: 8px;
+          }
+          span {
+            margin-right: 170px;
+          }
+          a {
+            text-decoration: none;
+            color: #0f60ff;
+          }
         }
         .dang-ky {
           background-color: #0f60ff;
+          color: #ffffff;
+          margin-top: 24px;
 
           border-radius: 6px;
           padding: 14px 172px;
