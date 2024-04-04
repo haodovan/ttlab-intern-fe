@@ -15,7 +15,9 @@
             designed to bring out your individuality and cater to your sense of
             style.
           </p>
-          <v-btn>Shop Now</v-btn>
+          <router-link to="/category-page">
+            <v-btn>Shop Now</v-btn>
+          </router-link>
           <div class="card-wrapper d-flex align-start justify-between">
             <div class="card" variant="none">
               <div class="card-number">200+</div>
@@ -53,13 +55,18 @@
     <!-- New Arrivals -->
     <v-container class="selling-section" fluid>
       <h1>NEW ARRIVALS</h1>
-      <v-row class="d-flex align-center justify-space-evenly">
-        <v-col v-for="i in 4" :key="i" cols="auto">
-          <v-card :variant="i" class="mx-auto" max-width="344">
+      <div class="product-wrapper d-flex align-center justify-space-evenly">
+        <div class="hidden-md-and-down" v-for="i in 4" :key="i">
+          <v-card :variant="i">
             <ProductCard />
           </v-card>
-        </v-col>
-      </v-row>
+        </div>
+        <div class="hidden-md-and-up" v-for="i in 2" :key="i">
+          <v-card :variant="i">
+            <ProductCard />
+          </v-card>
+        </div>
+      </div>
       <v-btn color="white">View All</v-btn>
     </v-container>
     <div class="div-divider">
@@ -68,13 +75,18 @@
     <!-- TOP SELLING -->
     <v-container class="selling-section" fluid>
       <h1>TOP SELLING</h1>
-      <v-row align="center" justify="center">
-        <v-col v-for="i in 4" :key="i" cols="auto">
+      <div class="product-wrapper d-flex align-center justify-space-evenly">
+        <div class="hidden-md-and-down" v-for="i in 4" :key="i">
           <v-card :variant="i">
             <ProductCard />
           </v-card>
-        </v-col>
-      </v-row>
+        </div>
+        <div class="hidden-md-and-up" v-for="i in 2" :key="i">
+          <v-card :variant="i">
+            <ProductCard />
+          </v-card>
+        </div>
+      </div>
       <v-btn color="white">View All</v-btn>
     </v-container>
     <!-- DRESS STYLE -->
@@ -197,6 +209,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  text-decoration: none;
+}
 ::-webkit-scrollbar {
   width: 14px;
 }
@@ -313,6 +328,9 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 0 100px;
+    .product-wrapper {
+      margin-right: 20px;
+    }
 
     h1 {
       font-family: "Integralcf-Bold", sans-serif;
@@ -506,6 +524,10 @@ export default {
     }
     .selling-section {
       padding: 0;
+      flex-wrap: nowrap;
+      .product-wrapper {
+        margin: 0 8px;
+      }
       h1 {
         font-size: 32px;
         line-height: 38.4px;

@@ -1,41 +1,43 @@
 <template>
   <v-card-item class="product-wrapper">
-    <div class="product-image">
-      <v-img src="../../assets/image.png"></v-img>
-    </div>
-    <div class="product-name">T-shirt With Tape Details</div>
-    <div class="product-rating d-flex align-center">
-      <v-rating
-        class="hidden-md-and-up"
-        style="padding-bottom: 5px"
-        :model-value="rating"
-        active-color="#FFC633"
-        color="orange"
-        density="compact"
-        emptyIcon=""
-        readonly
-        :length="computedRating"
-        half-increments
-        size="x-small"
-      ></v-rating>
-      <v-rating
-        class="hidden-md-and-down"
-        :model-value="rating"
-        active-color="#FFC633"
-        color="orange"
-        density="compact"
-        emptyIcon=""
-        readonly
-        :length="computedRating"
-        half-increments
-      ></v-rating>
-      <span>{{ rating }}/5</span>
-    </div>
-    <div class="product-price d-flex align-center">
-      <span>$260</span>
-      <span class="discount-price">$300</span>
-      <v-chip>-40%</v-chip>
-    </div>
+    <router-link to="/product-detail">
+      <div class="product-image">
+        <v-img src="../../assets/image.png"></v-img>
+      </div>
+      <div class="product-name">T-shirt With Tape Details</div>
+      <div class="product-rating d-flex align-center">
+        <v-rating
+          class="hidden-md-and-up"
+          style="padding-bottom: 5px"
+          :model-value="rating"
+          active-color="#FFC633"
+          color="orange"
+          density="compact"
+          emptyIcon=""
+          readonly
+          :length="computedRating"
+          half-increments
+          size="x-small"
+        ></v-rating>
+        <v-rating
+          class="hidden-md-and-down"
+          :model-value="rating"
+          active-color="#FFC633"
+          color="orange"
+          density="compact"
+          emptyIcon=""
+          readonly
+          :length="computedRating"
+          half-increments
+        ></v-rating>
+        <span>{{ rating }}/5</span>
+      </div>
+      <div class="product-price d-flex align-center">
+        <span>$260</span>
+        <span class="discount-price">$300</span>
+        <v-chip>-40%</v-chip>
+      </div>
+    </router-link>
   </v-card-item>
 </template>
 
@@ -66,6 +68,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  text-decoration: none;
+  color: #000000;
+}
 .product-wrapper {
   padding: 0;
   background-color: #ffffff;

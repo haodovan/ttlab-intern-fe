@@ -12,7 +12,9 @@
     <div class="wrapper d-flex align-center justify-start">
       <div class="logo-wrapper d-flex align-center justify-center">
         <v-icon class="menu hidden-lg-and-up">mdi-menu</v-icon>
-        <span class="logo">SHOP.CO</span>
+        <router-link to="/homepage">
+          <span class="logo">SHOP.CO</span>
+        </router-link>
       </div>
       <div class="link-nav d-flex hidden-sm-and-down">
         <v-menu>
@@ -82,6 +84,10 @@ const links = useUserStore().lists;
 </script>
 
 <style lang="scss" scoped>
+* {
+  text-decoration: none;
+  color: #000000;
+}
 .advertise {
   height: 38px;
   z-index: 2000;

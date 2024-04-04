@@ -154,7 +154,65 @@
           </v-menu>
           <span>of 50</span>
         </div>
-        <v-pagination v-model="page" :length="5"></v-pagination>
+        <v-pagination v-model="page" :length="5" :total-visible="6">
+          <template v-slot:item="{ isActive, page, props }">
+            <v-btn
+              v-if="!props.disabled"
+              class="pag-item"
+              flat
+              v-bind="props"
+              :color="isActive ? '#0F60FF' : '#F1F2F6'"
+              @click="props.onClick()"
+            >
+              {{ page }}
+            </v-btn>
+            <div class="d-flex align-end" style="height: 80%" v-else>
+              <span>{{ page }}</span>
+            </div>
+          </template>
+          <template
+            v-slot:next="{
+              onClick,
+              disabled,
+              'aria-label': ariaLabel,
+              'aria-disabled': ariaDisabled,
+            }"
+          >
+            <v-btn
+              size="28px"
+              flat
+              density="compact"
+              :disabled="disabled"
+              :color="!disabled ? '#F1F2F6' : '#0F60FF'"
+              @click="onClick"
+              :aria-label="ariaLabel"
+              :aria-disabled="ariaDisabled"
+            >
+              <v-icon class="arrow-icon">mdi-chevron-right</v-icon>
+            </v-btn>
+          </template>
+          <template
+            v-slot:prev="{
+              onClick,
+              disabled,
+              'aria-label': ariaLabel,
+              'aria-disabled': ariaDisabled,
+            }"
+          >
+            <v-btn
+              size="28px"
+              flat
+              density="compact"
+              :disabled="disabled"
+              :color="!disabled ? '#F1F2F6' : '#0F60FF'"
+              @click="onClick"
+              :aria-label="ariaLabel"
+              :aria-disabled="ariaDisabled"
+            >
+              <v-icon class="arrow-icon">mdi-chevron-left</v-icon>
+            </v-btn>
+          </template>
+        </v-pagination>
       </div>
     </template>
   </v-data-table>
@@ -350,6 +408,20 @@ export default {
     border-radius: 0px 0px 16px 16px;
     .v-pagination {
       margin: 16px 24px;
+      .pag-item {
+        height: 28px;
+        width: 28px;
+        //styleName: Light/Basic Typography/Paragraph Small;
+        font-family: Public Sans, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+      }
+
+      ul li {
+        margin: 2px;
+      }
     }
     .showing {
       margin-left: 24px;

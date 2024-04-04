@@ -10,6 +10,7 @@
           placeholder="Enter your email address"
           prepend-inner-icon="mdi-email-outline"
           hide-details
+          center-affix
         >
         </v-text-field>
         <v-btn class="input-email mt-2 bg-white" block
@@ -18,10 +19,8 @@
       </div>
     </div>
     <div class="footer-inside">
-      <div
-        class="link-grid d-flex flex-wrap align-content-center justify-space-evenly"
-      >
-        <div class="link-col">
+      <div class="link-grid d-flex flex-wrap align-content-center">
+        <div class="logo">
           <span>SHOP.CO</span>
           <p>
             We have clothes that suits your style and which you’re proud to
@@ -37,33 +36,35 @@
             ></v-btn>
           </div>
         </div>
-        <div class="link-col d-flex">
-          <b>COMPANY</b>
-          <a>About</a>
-          <a>Features</a>
-          <a>Works</a>
-          <a>Career</a>
-        </div>
-        <div class="link-col">
-          <b>HELP</b>
-          <a>Customer Support</a>
-          <a>Delivery Details</a>
-          <a>Terms & Conditions</a>
-          <a>Privacy Policy</a>
-        </div>
-        <div class="link-col">
-          <b>FAQ</b>
-          <a>Account</a>
-          <a>Manage Deliveries</a>
-          <a>Orders</a>
-          <a>Payments</a>
-        </div>
-        <div class="link-col final">
-          <b>RESOURCES</b>
-          <a>Free eBooks</a>
-          <a>Development Tutorial</a>
-          <a>How to - Blog</a>
-          <a>Youtube Playlist</a>
+        <div class="d-flex flex-wrap">
+          <div class="link-col">
+            <b>COMPANY</b>
+            <a>About</a>
+            <a>Features</a>
+            <a>Works</a>
+            <a>Career</a>
+          </div>
+          <div class="link-col">
+            <b>HELP</b>
+            <a>Customer Support</a>
+            <a>Delivery Details</a>
+            <a>Terms & Conditions</a>
+            <a>Privacy Policy</a>
+          </div>
+          <div class="link-col">
+            <b>FAQ</b>
+            <a>Account</a>
+            <a>Manage Deliveries</a>
+            <a>Orders</a>
+            <a>Payments</a>
+          </div>
+          <div class="link-col final">
+            <b>RESOURCES</b>
+            <a>Free eBooks</a>
+            <a>Development Tutorial</a>
+            <a>How to - Blog</a>
+            <a>Youtube Playlist</a>
+          </div>
         </div>
       </div>
       <v-divider></v-divider>
@@ -122,14 +123,18 @@ const icons = useUserStore().icons;
     max-width: 1240px;
     .link-grid {
       margin-top: 3rem;
-
-      .link-col {
-        display: flex;
-        flex-direction: column;
+      .logo {
         padding-right: 133px;
         p {
           max-width: 248px;
         }
+      }
+      .link-col {
+        display: flex;
+        flex-direction: column;
+        padding-right: 133px;
+        flex: 1 1;
+        box-sizing: border-box;
       }
       .final {
         padding-right: 0;
@@ -233,9 +238,15 @@ const icons = useUserStore().icons;
     .footer-inside {
       margin-top: 100px;
       .link-grid {
+        .logo {
+          padding-right: 50px;
+          P {
+            max-width: calc(100vw - 70px);
+            margin: 4px 0 20px 0;
+          }
+        }
         .link-col {
-          padding-right: 0;
-          margin-right: 75px;
+          padding-right: 50px;
           P {
             max-width: calc(100vw - 70px);
             margin: 4px 0 20px 0;

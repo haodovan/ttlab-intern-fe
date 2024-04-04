@@ -2,9 +2,9 @@
   <v-app-bar>
     <HeaderBar />
   </v-app-bar>
-  <v-app class="bg-white pt-16">
+  <v-spacer></v-spacer>
+  <v-app class="main-app bg-white">
     <CustomBreadcrumb :items="breadcrumbItems" />
-
     <!-- Product section -->
     <v-container flat class="products bg-white" fluid style="padding: 0 85px">
       <v-card flat class="product-wrapper bg-white">
@@ -69,9 +69,15 @@
             <span>1</span>
             <v-btn variant="plain" icon="mdi-plus"></v-btn>
           </div>
-          <v-btn class="submit-btn text-capitalize" elevation="0"
-            >Add to Cart</v-btn
-          >
+          <router-link to="/your-cart">
+            <v-btn
+              class="submit-btn text-capitalize"
+              elevation="0"
+              color="black"
+            >
+              Add to Cart
+            </v-btn>
+          </router-link>
         </div>
       </v-card>
     </v-container>
@@ -178,7 +184,9 @@
       </v-row>
     </v-container>
   </v-app>
-  <FooterBar />
+  <v-footer color="#f0f0f0">
+    <FooterBar />
+  </v-footer>
 </template>
 
 <script setup lang="ts">
@@ -192,6 +200,10 @@ const { rating, tab } = useUserStore();
 </script>
 
 <style lang="scss" scoped>
+.main-app {
+  margin-top: 70px;
+  margin-bottom: 12px;
+}
 .products {
   display: flex;
 
@@ -360,6 +372,10 @@ const { rating, tab } = useUserStore();
         font-weight: 500;
         line-height: 21.6px;
         text-align: left;
+        a {
+          text-decoration: none;
+          color: #ffffff;
+        }
       }
     }
   }
