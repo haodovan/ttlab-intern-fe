@@ -2,7 +2,7 @@
   <v-data-table
     class="table"
     :headers="headers"
-    :items="products"
+    :items="itemsMap"
     :search="search"
     :sort-by="[{ key: 'price', order: 'desc' }]"
     :itemsPerPage="itemsPerPage"
@@ -53,7 +53,7 @@
                     <span>*</span>
                   </p>
                   <v-text-field
-                    v-model="editedProduct.price"
+                    v-model.number="editedProduct.price"
                     label="Nhập giá sản phẩm"
                     variant="solo"
                     center-affix
@@ -69,7 +69,7 @@
                     <span>*</span>
                   </p>
                   <v-text-field
-                    v-model="editedProduct.quantity"
+                    v-model.number="editedProduct.quantity"
                     label="Nhập số lượng sản phẩm"
                     variant="solo"
                     center-affix
@@ -101,7 +101,7 @@
                     <span>*</span>
                   </p>
                   <v-text-field
-                    v-model="editedProduct.image"
+                    v-model="editedProduct.imageUrl"
                     label="Nhập link ảnh sản phẩm"
                     variant="solo"
                     center-affix
@@ -116,8 +116,21 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn flat class="cancel" variant="elevated"> Hủy </v-btn>
-              <v-btn flat class="save" color="primary" variant="elevated">
+              <v-btn
+                flat
+                class="cancel"
+                variant="elevated"
+                @click="cancelSubmit"
+              >
+                Hủy
+              </v-btn>
+              <v-btn
+                flat
+                class="save"
+                color="primary"
+                variant="elevated"
+                @click="handleSubmit"
+              >
                 Tạo mới
               </v-btn>
             </v-card-actions>
@@ -125,11 +138,14 @@
         </v-dialog>
       </div>
     </template>
-    <template v-slot:item.action="{}">
+    <template v-slot:item.action="{ item }">
       <div class="action-col">
         <v-icon>mdi-square-edit-outline</v-icon>
         <v-icon>mdi-trash-can-outline</v-icon>
       </div>
+    </template>
+    <template v-slot:item.imageUrl="{ item }">
+      <v-img style="width: 36px; height: 36px" :src="item.imageUrl"></v-img>
     </template>
     <template v-slot:bottom="{ itemsPerPage }">
       <div class="pagination-bar d-flex align-center justify-space-between">
@@ -154,7 +170,7 @@
           </v-menu>
           <span>of 50</span>
         </div>
-        <v-pagination v-model="page" :length="5" :total-visible="6">
+        <v-pagination v-model="page" :length="15" :total-visible="6">
           <template v-slot:item="{ isActive, page, props }">
             <v-btn
               v-if="!props.disabled"
@@ -219,9 +235,17 @@
 </template>
 
 <script lang="ts">
+import axios from "axios";
 import { ref } from "vue";
+import { defineComponent, PropType } from "vue";
 
-export default {
+export default defineComponent({
+  props: {
+    products: {
+      type: Array as PropType<any[]>, // Adjust the type according to your data structure
+      required: true,
+    },
+  },
   data() {
     const dialog = false;
     const search = "";
@@ -252,7 +276,7 @@ export default {
       {
         title: "ẢNH",
         align: "start",
-        key: "image",
+        key: "imageUrl",
       },
       {
         title: "HÀNH ĐỘNG",
@@ -260,61 +284,17 @@ export default {
         key: "action",
       },
     ];
-    const products = [
-      {
-        name: "Sản phẩm 1",
-        price: 6000,
-        quantity: 3,
-        description: "Lorem ipsum dolor sit amet",
-        image: "",
-      },
-      {
-        name: "Sản phẩm 1",
-        price: 7000,
-        quantity: 1,
-        description: "Lorem ipsum dolor sit amet",
-        image: "",
-      },
-      {
-        name: "Sản phẩm 1",
-        price: 6000,
-        quantity: 1,
-        description: "Lorem ipsum dolor sit amet",
-        image: "",
-      },
-      {
-        name: "Sản phẩm 4",
-        price: 6000,
-        quantity: 1,
-        description: "Lorem ipsum dolor sit amet",
-        image: "",
-      },
-      {
-        name: "Sản phẩm 1",
-        price: 6000,
-        quantity: 1,
-        description: "Lorem ipsum dolor sit amet",
-        image: "",
-      },
-      {
-        name: "Sản phẩm 1",
-        price: 6000,
-        quantity: 1,
-        description: "Lorem ipsum dolor sit amet",
-        image: "",
-      },
-    ];
+
     const editedProduct = {
       name: "",
       price: null,
       quantity: null,
       description: "",
-      image: "",
+      imageUrl: "",
     };
     return {
       search,
       headers,
-      products,
       dialog,
       editedIndex,
       page,
@@ -327,6 +307,29 @@ export default {
       this.itemsPerPage = number;
       if (number === "All") this.itemsPerPage = 1000;
     },
+    handleSubmit() {
+      console.log(this.editedProduct);
+      axios.post("http://localhost:3001/products", {
+        ...this.editedProduct,
+        category: "Áo thun",
+        size: "XL",
+        color: "Đỏ",
+        brand: "GHI",
+        origin: "Nhật Bản",
+      });
+
+      this.cancelSubmit();
+    },
+    cancelSubmit() {
+      this.editedProduct = {
+        name: "" as string,
+        price: null as number,
+        quantity: null as number,
+        description: "" as string,
+        imageUrl: "" as string,
+      };
+      this.dialog = false;
+    },
   },
   computed: {
     formTitle() {
@@ -334,8 +337,17 @@ export default {
         ? "Tạo mới sản phẩm"
         : "Chỉnh sửa sản phẩm";
     },
+    itemsMap() {
+      return this.products.map((product) => ({
+        name: product.name,
+        price: product.price,
+        quantity: product.quantity,
+        description: product.description,
+        imageUrl: product.imageUrl,
+      }));
+    },
   },
-};
+});
 </script>
 
 <style lang="scss">

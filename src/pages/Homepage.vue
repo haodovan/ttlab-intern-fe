@@ -7,7 +7,10 @@
   <v-app class="vue-app" style="background-color: #ffffff; color: black">
     <!-- main content -->
     <section style="background-color: #f0f0f0">
-      <v-container class="main-content d-flex align-center" fluid>
+      <v-container
+        class="main-content d-flex align-center flex-wrap justify-center"
+        fluid
+      >
         <div class="left-content">
           <h1>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
           <p>
@@ -28,7 +31,8 @@
               <div class="card-number">2,000+</div>
               <div class="card-text">High-Quality Products</div>
             </div>
-            <v-divider class="hidden-sm-and-down" vertical inset></v-divider>
+            <v-divider class="stride" vertical inset></v-divider>
+            <div class="hider"></div>
             <div class="card" variant="none">
               <div class="card-number">30,000+</div>
               <div class="card-text">Happy Customers</div>
@@ -57,12 +61,12 @@
       <h1>NEW ARRIVALS</h1>
       <div class="product-wrapper d-flex align-center justify-space-evenly">
         <div class="hidden-md-and-down" v-for="i in 4" :key="i">
-          <v-card :variant="i">
+          <v-card elevation="0">
             <ProductCard />
           </v-card>
         </div>
-        <div class="hidden-md-and-up" v-for="i in 2" :key="i">
-          <v-card :variant="i">
+        <div class="hidden-lg-and-up" v-for="i in 2" :key="i">
+          <v-card elevation="0">
             <ProductCard />
           </v-card>
         </div>
@@ -77,12 +81,12 @@
       <h1>TOP SELLING</h1>
       <div class="product-wrapper d-flex align-center justify-space-evenly">
         <div class="hidden-md-and-down" v-for="i in 4" :key="i">
-          <v-card :variant="i">
+          <v-card elevation="0">
             <ProductCard />
           </v-card>
         </div>
-        <div class="hidden-md-and-up" v-for="i in 2" :key="i">
-          <v-card :variant="i">
+        <div class="hidden-lg-and-up" v-for="i in 2" :key="i">
+          <v-card elevation="0">
             <ProductCard />
           </v-card>
         </div>
@@ -141,11 +145,11 @@
       <v-card elevation="0" color="white">
         <v-slide-group
           mobile-break-point="2000"
-          show-arrows="false"
           center-active
           next-icon=""
           prev-icon=""
           v-model="selectedSlide"
+          style="overflow: hidden"
         >
           <v-slide-group-item v-for="n in 15" :key="n">
             <v-card class="review-card" color="white" elevation="0">
@@ -180,7 +184,7 @@
     </v-container>
   </v-app>
   <v-footer color="#f0f0f0">
-    <FooterBar />
+    <FooterBar style="margin-inline: auto" />
   </v-footer>
 </template>
 
@@ -216,12 +220,12 @@ export default {
   width: 14px;
 }
 .vue-app {
-  margin-top: 52px;
+  margin-top: 3.25rem;
   .main-content {
     padding-bottom: 0;
-    padding-left: 100px;
+    padding-left: 6.25rem;
     .left-content {
-      padding-right: 42px;
+      padding-right: 2.625rem;
       .card-wrapper {
         .card-number {
           font-family: "Satoshi-Bold", sans-serif;
@@ -233,13 +237,13 @@ export default {
 
         .card-text {
           font-family: "Satoshi-Light", sans-serif;
-          font-size: 16px;
+          font-size: 1rem;
           font-weight: 400;
           line-height: 22px;
           text-align: left;
         }
         .v-divider {
-          margin: 0 32px;
+          margin: 0 2rem;
         }
       }
 
@@ -280,14 +284,15 @@ export default {
       }
     }
     .right-content {
+      overflow: hidden;
       .wrapper {
         position: relative;
-        height: 663px;
-        width: 720px;
+        height: 41.43rem;
+        width: 45rem;
 
         .bgImg {
-          height: 663px;
-          width: 720px;
+          height: 41.43rem;
+          width: 45rem;
           object-fit: cover;
           object-position: top left;
         }
@@ -437,9 +442,25 @@ export default {
   }
 }
 
-@media only screen and (max-width: 600px) and (min-width: 320px) {
+/* @media only screen and (max-width: 491px) {
+  .stride {
+    color: #f0f0f0;
+  }
+} */
+@media only screen and (max-width: 491px) {
+  .stride {
+    display: none;
+  }
+  .hider {
+    padding-right: 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
   .vue-app {
     margin-top: 30px;
+    margin-inline: auto;
+    font-size: 16px;
     .main-content {
       width: 100vw;
       padding-left: 0;
@@ -482,11 +503,11 @@ export default {
       }
       .right-content {
         .wrapper {
-          width: 390px;
-          height: 408px;
+          height: 25.5rem;
+          max-width: 24.375rem;
           .bgImg {
-            height: 408px;
-            width: 390px;
+            height: 25.5rem;
+            width: 24.375rem;
             object-fit: cover;
             object-position: top left;
           }

@@ -10,8 +10,8 @@
   <!-- Navbar -->
   <div flat class="navbar bg-white">
     <div class="wrapper d-flex align-center justify-start">
-      <div class="logo-wrapper d-flex align-center justify-center">
-        <v-icon class="menu hidden-lg-and-up">mdi-menu</v-icon>
+      <div class="logo-wrapper d-flex align-center">
+        <v-icon class="menu-icon hidden-md-and-up mr-4">mdi-menu</v-icon>
         <router-link to="/homepage">
           <span class="logo">SHOP.CO</span>
         </router-link>
@@ -89,12 +89,12 @@ const links = useUserStore().lists;
   color: #000000;
 }
 .advertise {
-  height: 38px;
+  height: 2.375rem;
   z-index: 2000;
   position: fixed !important;
   width: 100vw !important;
   top: 0;
-  padding: 0 100px;
+  padding: 0 6.25rem;
   div {
     width: 100vw !important;
     span {
@@ -103,6 +103,7 @@ const links = useUserStore().lists;
       font-weight: 400;
       line-height: 18.9px;
       text-align: left;
+      color: #ffffff;
     }
     a {
       cursor: pointer;
@@ -113,6 +114,7 @@ const links = useUserStore().lists;
       text-align: left;
       text-decoration: underline;
       padding-left: 2px;
+      color: #ffffff;
     }
   }
 }
@@ -192,17 +194,16 @@ const links = useUserStore().lists;
   .navbar {
     top: 34px !important;
     padding: 0;
+
     .wrapper {
       padding: 0 16px;
       height: 64px;
       .logo-wrapper {
-        .menu {
-          margin-right: 16px;
-        }
         .logo {
           font-size: 18px;
           line-height: 30.24px;
           margin-bottom: 4px;
+          margin-left: 16px;
         }
       }
     }

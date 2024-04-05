@@ -1,7 +1,7 @@
 <template>
   <Sidebar />
   <div class="main">
-    <v-nav class="navbar d-flex align-center justify-space-between">
+    <div class="navbar d-flex align-center justify-space-between">
       <h1>Danh sách sản phẩm</h1>
       <div>
         <v-icon>mdi-bell-outline</v-icon>
@@ -9,14 +9,34 @@
           image="https://randomuser.me/api/portraits/men/85.jpg"
         ></v-avatar>
       </div>
-    </v-nav>
-    <DataTable />
+    </div>
+    <DataTable :products="products" />
   </div>
 </template>
 
-<script>
-import Sidebar from "../../components/Bars/Sidebar.vue";
-import DataTable from "../../components/Tables/DataTable.vue";
+<script lang="ts">
+import axios from "axios";
+import { useUserStore } from "../../stores/app";
+import { defineComponent, onBeforeMount, ref } from "vue";
+
+export default defineComponent({
+  setup() {
+    const userStore = useUserStore();
+    const products = ref([]);
+
+    onBeforeMount(async () => {
+      try {
+        const { data } = await axios.get("http://localhost:3001/products");
+        userStore.setProducts(data);
+        products.value = userStore.products;
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    });
+
+    return { userStore, products };
+  },
+});
 </script>
 
 <style lang="scss" scoped>

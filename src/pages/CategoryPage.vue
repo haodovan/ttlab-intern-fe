@@ -252,13 +252,20 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
 import FooterBar from "../components/Bars/FooterBar.vue";
 import HeaderBar from "../components/Bars/HeaderBar.vue";
 import { useUserStore } from "../stores/app";
 import { computed, ref } from "vue";
 
 const userStore = useUserStore();
-const { link2: links, productList, colors, sizes, styles } = userStore;
+const {
+  link2: links,
+  productList,
+  colors,
+  sizes,
+  styles,
+} = storeToRefs(userStore);
 
 const page = ref(1);
 

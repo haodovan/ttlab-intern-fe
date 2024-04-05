@@ -177,7 +177,7 @@
       <h1>You might also like</h1>
       <v-row align="center" justify="center">
         <v-col v-for="i in 4" :key="i" cols="auto">
-          <v-card :variant="i" class="mx-auto" max-width="345">
+          <v-card class="mx-auto" max-width="345">
             <ProductCard />
           </v-card>
         </v-col>
@@ -190,13 +190,15 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
 import FooterBar from "../components/Bars/FooterBar.vue";
 import HeaderBar from "../components/Bars/HeaderBar.vue";
 import ProductCard from "../components/ProductCard/ProductCard.vue";
 import { useUserStore } from "../stores/app";
 
+const store = useUserStore();
 const breadcrumbItems = useUserStore().link1;
-const { rating, tab } = useUserStore();
+const { rating, tab } = storeToRefs(store);
 </script>
 
 <style lang="scss" scoped>

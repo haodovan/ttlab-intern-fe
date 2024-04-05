@@ -4,7 +4,7 @@
     :rail="rail"
     permanent
     @click="rail = false"
-    rail-width="68"
+    rail-width="62"
     class="sidebar"
   >
     <v-list-item class="logo d-flex justify-space-between align-center" nav>
@@ -23,7 +23,13 @@
 
     <v-divider></v-divider>
 
-    <v-list class="link-list" density="compact" nav>
+    <v-list
+      class="link-list"
+      density="compact"
+      nav
+      active-color="#23272E"
+      base-color="#8B909A"
+    >
       <span class="section-name" v-show="!rail">Quản lý sản phẩm</span>
       <v-list-item class="san-pham" title="Sản phẩm" value="1" selected>
         <template v-slot:prepend>

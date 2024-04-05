@@ -6,21 +6,31 @@
       <div class="dang-nhap">
         <v-form class="form d-flex flex-column align-start" @submit.prevent>
           <label for="Email">Email</label>
-          <input
-            type="text"
+          <v-text-field
             name="Email"
             class="email-input"
             required="required"
             placeholder="Nhập email"
-          />
+            center-affix
+            density="compact"
+            hide-details
+            single-line
+            variant="outlined"
+            flat
+          ></v-text-field>
           <label for="Password">Mật khẩu</label>
-          <input
-            type="text"
+          <v-text-field
             name="Password"
             class="email-input"
             required="required"
             placeholder="Nhập password"
-          />
+            center-affix
+            density="compact"
+            hide-details
+            single-line
+            variant="outlined"
+            flat
+          ></v-text-field>
           <div class="forgot-password d-flex align-center">
             <input type="checkbox" />
             <span>Ghi nhớ đăng nhập</span>
@@ -64,11 +74,19 @@
         .email-input {
           width: 425px;
           height: 32px;
-          border: 1px solid #868fa029;
-          box-shadow: 0px 1px 2px 0px #0000000f;
-          border-radius: 0.5rem;
-          padding: 6px 12px;
 
+          .v-input__control {
+            .v-field__field {
+              :deep() {
+                height: 32px !important;
+              }
+              input {
+                padding-top: 0;
+              }
+            }
+          }
+
+          padding: 6px 12px;
           font-family: Public Sans, sans-serif;
           font-size: 14px;
           font-weight: 400;

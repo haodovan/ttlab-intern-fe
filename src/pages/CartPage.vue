@@ -81,6 +81,7 @@
 </template>
 
 <script lang="ts">
+import { storeToRefs } from "pinia";
 import FooterBar from "../components/Bars/FooterBar.vue";
 import HeaderBar from "../components/Bars/HeaderBar.vue";
 import { useUserStore } from "../stores/app";
@@ -89,7 +90,7 @@ import { ref } from "vue";
 export default {
   setup() {
     const userStore = useUserStore();
-    const { link3: links } = userStore;
+    const { link3: links } = storeToRefs(userStore);
 
     const selectedOption = ref(null);
 
